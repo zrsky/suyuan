@@ -1,0 +1,66 @@
+/*husbandry*/
+
+.husbandry .top_img {
+    position: relative;
+}
+
+.husbandry .top_img p {
+    position: absolute;
+    top: 40%;
+    left: 20%;
+    font-size: 1vw;
+    color: #fff;
+}
+
+.husbandry .top_img img {
+    width: 100%;
+}
+
+.husbandry .husbandry_content {
+    margin-top: 40px;
+}
+
+.husbandry .husbandry_content .tabBar {
+    background: #EFF3A5;
+    border-radius: 4px;
+    padding: 5px 20px;
+    height: 450px;
+    margin-bottom: 100px;
+}
+
+.husbandry .husbandry_content .tabBar .tabBar_top {
+    border-bottom: 1px solid #B9B7B7;
+}
+
+.husbandry .husbandry_content .tabBar .tabBar_top p {
+    color: #ABAAAA;
+}
+
+.husbandry .husbandry_content .tabBar ul {
+    display: inline-block;
+    padding: 0;
+}
+
+.husbandry .husbandry_content .tabBar li {
+    color: #ABAAAA;
+    padding: 8px 0 8px 20px;
+    width: 120px;
+    border-bottom: 1px solid #ccc;
+    cursor: pointer;
+}
+.husbandry .husbandry_content .tabBar li.active {
+  color:#000;
+}
+.husbandry .husbandry_content .tabBar .content {
+    display: inline-block;
+    margin: 15px 0 0 40px;
+    color: #7C7C7C;
+}
+.husbandry .husbandry_content .tabBar .content .content_son {
+  display: none;
+}
+.husbandry .husbandry_content .tabBar .content .content_son:first-child {
+  display: inline-block;
+}
+
+/*/husbandry*/

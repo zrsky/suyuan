@@ -1,0 +1,53 @@
+/*nj_course*/
+.nj_course .top_img {
+	position: relative;
+}
+.nj_course .top_img img {
+	width: 100%;
+}
+.nj_course .top_img p {
+	position: absolute;
+	top: 40%;
+	left: 20%;
+	font-size: 1vw;
+	color: #fff;
+}
+.nj_course .nj_course_content {
+	margin-top: 40px;
+}
+.companyShow .nj_course_content ul {
+	padding: 0 40px;
+}
+.nj_course .nj_course_content ul li {
+	float: left;
+	margin: 15px 10px;
+}
+.nj_course .nj_course_content ul li a{
+	color:#333;
+}
+.nj_course .nj_course_content ul li .word_wraper {
+	background:#F5F5F5;
+	padding: 0 10px 10px 10px;
+}
+.nj_course .nj_course_content ul li span {
+	display:inline-block;
+	margin: 12px 0;
+	font-size: 17px;
+}
+.nj_course .nj_course_content ul li p {
+	margin: 0 0 12px 0;
+	color:#A5A5A5;
+	font-size: 13px;
+}
+.nj_course .nj_course_content .top_nav {
+	padding-left: 50px;
+}
+.pagination {
+	margin-bottom: 50px;
+}
+section.banner_4 .content {
+	margin-top: 20px;
+	position:relative;
+
+}
+/*/nj_course*/

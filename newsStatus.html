@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>新闻动态</title>
+    <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/pagination.css">
+    <link rel="stylesheet" type="text/css" href="css/newsStatus.css">
+</head>
+
+<body>
+    <!-- 导航栏  -->
+    <section class="navBar hidden-xs">
+        <div class="col-md-8 col-sm-12">
+            <a href="./index.html"><p class="nav_p1">延津县农产品质量安全追溯平台</p>
+            <p class="nav_p2">YANJIN AGRICUL TURAL PRODUCT QUALITY SAFETY SAFETY TRACEABIUTY PLATFORM</p></a>
+        </div>
+        <select class="select_id" style="visibility:hidden;">
+            <option value="1">新闻动态</option>
+            <option value="2">企业展示</option>
+            <option value="3">特色产品</option>
+            <option value="4">农家课堂</option>
+        </select>
+        <div class="col-md-4 col-sm-12 search">
+            <input id="oInput" type="text" name="">
+            <!-- <span>新闻动态</span> -->
+            <select class="select_id">
+                <option value="1">新闻动态</option>
+                <option value="2">企业展示</option>
+                <option value="3">特色产品</option>
+                <option value="4">农家课堂</option>
+            </select>
+            <!-- <i class="glyphicon glyphicon-triangle-bottom
+            glyphicon glyphicon-"></i> -->
+            <span>搜索</span>
+        </div>
+    </section>
+    <!-- /导航栏  -->
+    <!-- 版心 -->
+     <section class="news_status">
+        <div class="top_img">
+            <img src="images/news.png" alt="">
+            <p>新闻动态</p>
+        </div>
+        <div class="news_status_content">
+            <div class="container">
+                <div class="panel panel-suyuan">
+                    <!-- Default panel contents -->
+                    <div class="panel-heading"><a href="index.html">新闻动态</a> > 行业资讯</div>
+                    <!-- List group -->
+                    <ul class="list-group">
+                        <li class="list-group-item">这是一条详细新闻信息，虽然字数很少但是可以展现出来样式<p class="pull-right hidden-xs">2017/1/2</p></li>
+                        <li class="list-group-item">这是一条详细新闻信息，虽然字数很少但是可以展现出来样式<p class="pull-right hidden-xs">2017/1/2</p></li>
+                        <li class="list-group-item">这是一条详细新闻信息，虽然字数很少但是可以展现出来样式<p class="pull-right hidden-xs">2017/1/2</p></li>
+                        <li class="list-group-item">这是一条详细新闻信息，虽然字数很少但是可以展现出来样式<p class="pull-right hidden-xs">2017/1/2</p></li>
+                        <li class="list-group-item">这是一条详细新闻信息，虽然字数很少但是可以展现出来样式<p class="pull-right hidden-xs">2017/1/2</p></li>
+                        <li class="list-group-item"><div class="pagination"></div></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /版心 -->
+    <!-- 底部 -->
+    <section class="footer">
+        <div class="col-md-4 col-sm-3 col-xs-6 f1">溯源</div>
+        <div class="col-md-4 col-sm-6 col-xs-6 hidden-xs f2">
+            <ul class="col-md-12 col-sm-12">
+                <li>产品溯源</li>
+                <li>舆情监测</li>
+                <li>优秀产品</li>
+                <li>移动助手</li>
+                <li>用户指南</li>
+            </ul>
+            <div class="">
+                <div class="col-md-3 col-sm-3 col-xs-2 f2_1">滇ICP备</div>
+                <div class="col-md-4 col-sm-4 col-xs-5 f2_2">号 | 滇公网安备</div>
+                <div class="col-md-3 col-sm-3 col-xs-3 f2_3">号 | 滇ICP证</div>
+                <div class="col-md-1 col-sm-1 col-xs-1 f2_4">号</div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-3 col-xs-6 f3">Copyright @ 2017</div>
+    </section>
+    <!-- /底部 -->
+</body>
+
+</html>
+<script src="node_modules/jquery/dist/jquery.min.js"></script>
+<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="js/jquery.pagination.js"></script>
+<script src="js/pagination.js"></script>

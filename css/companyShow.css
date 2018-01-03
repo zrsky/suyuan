@@ -1,0 +1,38 @@
+/*news_status*/
+.companyShow .top_img {
+	position: relative;
+}
+.companyShow .top_img img {
+	width: 100%;
+}
+.companyShow .top_img p {
+	position: absolute;
+	top: 40%;
+	left: 20%;
+	font-size: 1vw;
+	color: #fff;
+}
+.companyShow .companyShow_content {
+	margin-top: 40px;
+}
+.companyShow .companyShow_content h4 {
+	margin-left: 50px;
+}
+.companyShow .companyShow_content ul {
+	padding: 0 40px;
+}
+.companyShow .companyShow_content ul li {
+	float: left;
+	margin: 0 10px;
+}
+.companyShow .companyShow_content ul li p:nth-of-type(1) {
+	margin-top: 10px;
+}
+.companyShow .companyShow_content ul li p:nth-of-type(2) {
+	margin-bottom: 20px;
+	color: #8D8C8C;
+}
+.pagination {
+	margin-bottom: 50px;
+}
+/*/news_status*/

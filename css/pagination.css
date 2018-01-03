@@ -1,0 +1,16 @@
+@charset "UTF-8";
+.demo-image{
+    width: 100%;
+}
+.pagination {
+    width: 100%;
+    text-align: center;
+}
+.pagination a,.pagination span {
+    color:#A2A1A1;
+    margin: 0 5px;
+}
+.pagination span.active {
+    color:#000;
+    margin: 0 5px;
+}
