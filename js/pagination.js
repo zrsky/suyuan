@@ -11,9 +11,11 @@
             var data = {
                 page: api.getCurrent(),
             };
+            console.log(111)
             console.log(api.getCurrent());
             $.ajax('', data, function(data) {
                 console.log(data);
+
             })
         }
     })

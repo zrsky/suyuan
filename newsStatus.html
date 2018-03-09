@@ -14,50 +14,65 @@
     <!-- 导航栏  -->
     <section class="navBar hidden-xs">
         <div class="col-md-8 col-sm-12">
-            <a href="./index.html"><p class="nav_p1">延津县农产品质量安全追溯平台</p>
-            <p class="nav_p2">YANJIN AGRICUL TURAL PRODUCT QUALITY SAFETY SAFETY TRACEABIUTY PLATFORM</p></a>
+            <p class="nav_p1"><a href="./index.html">延津县电子商务平台</a></p>
+            <p class="nav_p2"><a href="./index.html">Yanjin County E-commerce Platform</a></p>
         </div>
-        <select class="select_id" style="visibility:hidden;">
-            <option value="1">新闻动态</option>
-            <option value="2">企业展示</option>
-            <option value="3">特色产品</option>
-            <option value="4">农家课堂</option>
-        </select>
         <div class="col-md-4 col-sm-12 search">
-            <input id="oInput" type="text" name="">
-            <!-- <span>新闻动态</span> -->
-            <select class="select_id">
-                <option value="1">新闻动态</option>
-                <option value="2">企业展示</option>
-                <option value="3">特色产品</option>
-                <option value="4">农家课堂</option>
-            </select>
-            <!-- <i class="glyphicon glyphicon-triangle-bottom
-            glyphicon glyphicon-"></i> -->
-            <span>搜索</span>
+            <form id="searchForm" action="#">
+                <input id="oInput" type="text" name="keyword">
+                <!-- <span>新闻动态</span> -->
+                <ul id="main">
+                    <li>新闻动态</li>
+                </ul>
+                <ul id="drop" class="drop">
+                    <li>新闻动态</li>
+                    <li>特色产品</li>
+                    <li>企业展示</li>
+                    <li>农家课堂</li>
+                </ul>
+                <i class="glyphicon glyphicon-triangle-bottom
+                glyphicon glyphicon-"></i>
+                <button type="submit" id="search">搜索</button>
+            </form>
         </div>
     </section>
     <!-- /导航栏  -->
     <!-- 版心 -->
-     <section class="news_status">
-        <div class="top_img">
-            <img src="images/news.png" alt="">
-            <p>新闻动态</p>
+    <section class="news_status">
+        <div class="top_img" id="top_img_wrapper">
+            <script id="category_templ" type="text/html">
+                <img src="images/news.jpg" alt="">
+                <p><a href="index.html#banner_1">新闻动态</a>
+                {{if cate_name}}
+                 ><span class="title">{{cate_name}}</span>
+                {{/if}}
+                </p>
+            </script>
         </div>
         <div class="news_status_content">
             <div class="container">
-                <div class="panel panel-suyuan">
-                    <!-- Default panel contents -->
-                    <div class="panel-heading"><a href="index.html">新闻动态</a> > 行业资讯</div>
+                <div class="panel panel-suyuan" id="suyuan_wrapper">
+                    <script id="title_templ" type="text/html">
+                        <!-- Default panel contents -->
+                        {{if cate_name}}
+                        <div class="panel-heading">
+                            <span class="title">{{cate_name}}</span>
+                        </div>
+                        {{/if}}
+                    </script>
                     <!-- List group -->
-                    <ul class="list-group">
-                        <li class="list-group-item">这是一条详细新闻信息，虽然字数很少但是可以展现出来样式<p class="pull-right hidden-xs">2017/1/2</p></li>
-                        <li class="list-group-item">这是一条详细新闻信息，虽然字数很少但是可以展现出来样式<p class="pull-right hidden-xs">2017/1/2</p></li>
-                        <li class="list-group-item">这是一条详细新闻信息，虽然字数很少但是可以展现出来样式<p class="pull-right hidden-xs">2017/1/2</p></li>
-                        <li class="list-group-item">这是一条详细新闻信息，虽然字数很少但是可以展现出来样式<p class="pull-right hidden-xs">2017/1/2</p></li>
-                        <li class="list-group-item">这是一条详细新闻信息，虽然字数很少但是可以展现出来样式<p class="pull-right hidden-xs">2017/1/2</p></li>
-                        <li class="list-group-item"><div class="pagination"></div></li>
+                    <ul class="list-group" id="listGroup">
+                        <script id="news_templ" type="text/html">
+                        {{if data.data != 0}}
+                            {{each data.data as value}}
+                            <li class="list-group-item"><a class="linkUrl" href="./newsDetail.html?id={{value.id}}">{{value.title}}<p class="pull-right hidden-xs">{{value.update_time}}</p></a></li>
+                            {{/each}}
+                        {{else}}
+                            <p style="font-size:20px;">找不到你搜索的内容</p>
+                        {{/if}}
+                        </script>
                     </ul>
+                    <div class="pagination"></div>
                 </div>
             </div>
         </div>
@@ -81,7 +96,7 @@
                 <div class="col-md-1 col-sm-1 col-xs-1 f2_4">号</div>
             </div>
         </div>
-        <div class="col-md-4 col-sm-3 col-xs-6 f3">Copyright @ 2017</div>
+        <div class="col-md-4 col-sm-3 col-xs-6 f3">Copyright © 2017</div>
     </section>
     <!-- /底部 -->
 </body>
@@ -89,5 +104,129 @@
 </html>
 <script src="node_modules/jquery/dist/jquery.min.js"></script>
 <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="js/template.js"></script>
 <script src="js/jquery.pagination.js"></script>
-<script src="js/pagination.js"></script>
+<!-- <script src="js/pagination.js"></script> -->
+<script src="js/nav.js"></script>
+<script src="js/search.js" charset=utf-8></script>
+<script src="js/style.js"></script>
+<script>
+$(function() {
+    var name = window.location.search.substring(1).split("=")[0];
+    var id = window.location.search.split("=")[1];
+    var url = '';
+    if (name == "keyword") {
+        url = URL + '/index/news/index/keyword/' + id;
+    } else {
+        // switch (id) {
+        //     case '3':
+        //         $(".title").html('展会动态');
+        //         console.log(111)
+        //         break;
+        //     case '4':
+        //         $(".title").html('政府政策');
+        //         break;
+        //         // case '4':
+        //         //     $("#title").html('农家课堂');
+        //         //     break;
+        //     case '5':
+        //         $(".title").html('行业资讯');
+        //         break;
+        // }
+        url = URL + '/index/news/index/news_cate_id/' + id;
+    }
+
+    // 日期格式化
+    Date.prototype.Format = function(fmt) {
+        var o = {
+            "M+": this.getMonth() + 1, //月份
+            "d+": this.getDate(), //日
+            "h+": this.getHours(), //小时
+            "m+": this.getMinutes(), //分
+            "s+": this.getSeconds(), //秒
+            "q+": Math.floor((this.getMonth() + 3) / 3), //季度
+            "S": this.getMilliseconds() //毫秒
+        };
+        if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+        for (var k in o)
+            if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+        return fmt;
+    }
+    // 调用：
+
+    var time = new Date(parseInt("15264514636")).Format("yyyy-MM-dd");
+
+    $.ajax({
+        url: url,
+        type: 'post',
+        dataType: 'json',
+        async: false,
+        success: function(msg) {
+            for (var i in msg.data.data) {
+                msg.data.data[i].update_time = new Date(parseInt(msg.data.data[i].update_time)*1000).Format("yyyy-MM-dd");
+            }
+            if (msg.data.data.length < 10) {
+                $(".pagination").css({ 'display': 'none' });
+            }
+            var html = template('news_templ', msg);
+            $("#listGroup").html(html);
+            var html = template('title_templ', msg);
+            $("#suyuan_wrapper").prepend(html);
+            var html = template('category_templ', msg);
+            $("#top_img_wrapper").html(html);
+            // 分页
+            if (name != "keyword") {
+                $(".pagination").pagination({
+                    coping: true,
+                    pageCount: Math.ceil(msg.data.total/10),
+                    homePage: '首页',
+                    endPage: '末尾',
+                    prevContent: '上页',
+                    nextContent: '下页',
+                    callback: function(api) {
+                        var data = {
+                            page: api.getCurrent(),
+                        };
+                        $.ajax({
+                            url: url,
+                            type: 'post',
+                            data: data,
+                            dataType: 'json',
+                            async: false,
+                            success: function(data) {
+                                for (var i in data.data.data) {
+                                    data.data.data[i].update_time = new Date(parseInt(data.data.data[i].update_time)).Format("yyyy-MM-dd");
+                                }
+                                var html = template('news_templ', data);
+                                $("#listGroup").html(html);
+                                // limit($(".linkUrl"), 50);
+
+
+                            },
+                            error: function(err) {
+                                console.log(err)
+                            }
+                        })
+                    }
+                })
+            }
+            //省略多余字体
+            // function limit(ele, num) {
+            //     for (var i = 0; i < ele.length; i++) {
+            //         if (ele.eq(i).html().length > num) {
+            //             var content = ele.eq(i).html().substring(0, 23);
+            //             ele.eq(i).html(content + '...');
+            //         }
+            //     }
+            // }
+
+            // limit($(".newsTitle"), 50);
+
+        },
+        error: function(xhr) {
+
+            console.log(xhr)
+        }
+    })
+})
+</script>

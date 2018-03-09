@@ -1,6 +1,11 @@
 /*nj_course*/
+.nj_course {
+	min-height:667px;
+	margin-bottom: 50px;
+}
 .nj_course .top_img {
 	position: relative;
+	top: 18px;
 }
 .nj_course .top_img img {
 	width: 100%;
@@ -12,15 +17,21 @@
 	font-size: 1vw;
 	color: #fff;
 }
+.nj_course .top_img p a {
+  color: #fff!important;
+}
 .nj_course .nj_course_content {
 	margin-top: 40px;
 }
-.companyShow .nj_course_content ul {
-	padding: 0 40px;
+.nj_course .nj_course_content .top_nav span {
+	font-size: 18px;
 }
+
 .nj_course .nj_course_content ul li {
 	float: left;
 	margin: 15px 10px;
+	height: 309px;
+	width:241px;
 }
 .nj_course .nj_course_content ul li a{
 	color:#333;
@@ -33,15 +44,25 @@
 	display:inline-block;
 	margin: 12px 0;
 	font-size: 17px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	width: 231px;
 }
 .nj_course .nj_course_content ul li p {
-	margin: 0 0 12px 0;
+	/*margin: 0 0 12px 0;*/
 	color:#A5A5A5;
 	font-size: 13px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	width: 231px;
+	margin: 0!important;
 }
-.nj_course .nj_course_content .top_nav {
+/*.nj_course .nj_course_content .top_nav {
 	padding-left: 50px;
-}
+	
+}*/
 .pagination {
 	margin-bottom: 50px;
 }

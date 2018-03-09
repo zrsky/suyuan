@@ -3,10 +3,10 @@
 
 <head>
     <meta charset="utf-8">
-    <title>畜牧业</title>
+    <title>溯源详情</title>
     <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="stylesheet" type="text/css" href="css/pagination.css">
+    <!-- <link rel="stylesheet" type="text/css" href="css/pagination.css"> -->
     <link rel="stylesheet" type="text/css" href="css/husbandry.css">
 </head>
 
@@ -14,64 +14,53 @@
     <!-- 导航栏  -->
     <section class="navBar hidden-xs">
         <div class="col-md-8 col-sm-12">
-            <a href="./index.html"><p class="nav_p1">延津县农产品质量安全追溯平台</p>
-            <p class="nav_p2">YANJIN AGRICUL TURAL PRODUCT QUALITY SAFETY SAFETY TRACEABIUTY PLATFORM</p></a>
+            <p class="nav_p1"><a href="./index.html">延津县电子商务平台</a></p>
+            <p class="nav_p2"><a href="./index.html">Yanjin County E-commerce Platform</a></p>
         </div>
-        <select class="select_id" style="visibility:hidden;">
-            <option value="1">新闻动态</option>
-            <option value="2">企业展示</option>
-            <option value="3">特色产品</option>
-            <option value="4">农家课堂</option>
-        </select>
         <div class="col-md-4 col-sm-12 search">
-            <input id="oInput" type="text" name="">
-            <!-- <span>新闻动态</span> -->
-            <select class="select_id">
-                <option value="1">新闻动态</option>
-                <option value="2">企业展示</option>
-                <option value="3">特色产品</option>
-                <option value="4">农家课堂</option>
-            </select>
-            <!-- <i class="glyphicon glyphicon-triangle-bottom
-            glyphicon glyphicon-"></i> -->
-            <span>搜索</span>
+            <form id="searchForm" action="#">
+                <input id="oInput" type="text" name="keyword">
+                <!-- <span>新闻动态</span> -->
+                <ul id="main">
+                    <li>新闻动态</li>
+                </ul>
+                <ul id="drop" class="drop">
+                    <li>新闻动态</li>
+                    <li>特色产品</li>
+                    <li>企业展示</li>
+                    <li>农家课堂</li>
+                </ul>
+                <i class="glyphicon glyphicon-triangle-bottom
+                glyphicon glyphicon-"></i>
+                <button type="submit" id="search">搜索</button>
+            </form>
         </div>
     </section>
     <!-- /导航栏  -->
     <!-- 版心 -->
-     <section class="husbandry">
+    <section class="husbandry" id="husbandry">
         <div class="top_img">
-            <img src="images/news.png" alt="">
-            <p>溯源详情/畜牧业详情</p>
+            <img src="images/news.jpg" alt="">
+            <p id="top_img_wrapper"><a href="index.html">溯源详情</a>
+                <script id="category_templ" type="text/html">
+                    {{if data != 0}} {{if data.product.product_cate_id==2}}
+                    <span id="title"> > 畜牧业详情</span> {{else if data.product.product_cate_id==1}}
+                    <span id="title"> > 种植业详情</span> {{/if}} {{/if}}
+                </script>
+            </p>
         </div>
         <div class="husbandry_content">
             <div class="container">
-                <div class="tabBar">
-                    <div class="tabBar_top">
-                        <h3>畜产品产品名称</h3>
-                        <p>您查询的畜牧业条码号为：415005520000</p>
-                    </div>
-                    <ul class="pull-left ul_m_wrapper">
-                        <li class="active">建档管理</li>
-                        <li>饲料管理</li>
-                        <li>防疫管理</li>
-                        <li>加工管理</li>
-                        <li>质量检测管理</li>
-                        <li>质量认证管理</li>
-                    </ul>
-                   <div class="content">
-                        <div class="content_son">
-                            <p>出生记录: <span>2017/1/2</span></p>
-                            <p>品种类型: <span>某某类型</span></p>
-                            <p>性别: <span>雄性</span></p>
-                            <p>年龄: <span>3</span></p>
+                <div class="tabBar" id="tabBar">
+                    <div class="loader">
+                        <div class="loader-inner line-scale">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
                         </div>
-                        <div class="content_son">2</div>
-                        <div class="content_son">3</div>
-                        <div class="content_son">4</div>
-                        <div class="content_son">5</div>
-                        <div class="content_son">6</div>
-                   </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -95,14 +84,436 @@
                 <div class="col-md-1 col-sm-1 col-xs-1 f2_4">号</div>
             </div>
         </div>
-        <div class="col-md-4 col-sm-3 col-xs-6 f3">Copyright @ 2017</div>
+        <div class="col-md-4 col-sm-3 col-xs-6 f3">Copyright © 2017</div>
     </section>
     <!-- /底部 -->
 </body>
 
 </html>
+<script id="test" type="text/html">
+    {{if data.product}} {{if data.product.product_cate_id==2}}
+    <div class="tabBar_top">
+        <h3>{{data.product.name}}</h3>
+        <p>您查询的畜牧业条码号为：{{data.product.id}}</p>
+    </div>
+    <ul class="pull-left ul_m_wrapper" id="ul_m_wrapper">
+        <li class="active">基本信息</li>
+        <li>建档管理</li>
+        <li>饲料管理</li>
+        <li>防疫管理</li>
+        <li>加工管理</li>
+        <li>质量检测管理</li>
+        <li>质量认证管理</li>
+    </ul>
+    <div class="content">
+        <div class="content_son">
+        {{if data.product.name}}
+            <p>产品名称: <span>{{data.product.name}}</span></p>
+        {{/if}}
+        {{if data.product.batch}}
+            <p>生产批次: <span>{{data.product.batch}}</span></p>
+        {{/if}}
+        <!-- {{if data.product.introduce}} -->
+            <!-- <p>产品简介: <span>{{data.product.introduce}}</span></p> -->
+        <!-- {{/if}} -->
+            {{if data.product.pro_img}}
+            <p class="checkData">产品图片: <span> <img width="150px" src="{{data.product.pro_img}}"></span></p>
+            {{/if}}
+        </div>
+        <div class="content_son">
+        {{if data.product.jiandang_man}}
+            <p>管理人员: <span>{{data.product.jiandang_man}}</span></p>
+        {{/if}}
+        {{if data.product.birt}}
+            <p>出生日期: <span>{{data.product.birt}}</span></p>
+        {{/if}}
+        {{if data.product.birinfo}}
+            <p>出生记录: <span>{{data.product.birinfo}}</span></p>
+        {{/if}}
+        {{if data.product.breed}}
+            <p>品种类型: <span>{{data.product.breed}}</span></p>
+        {{/if}}
+        {{if data.product.sex}}
+            <p>性别: <span>{{data.product.sex}}</span></p>
+        {{/if}}
+        {{if data.product.age >= 0}}
+            <p>年龄: <span>{{data.product.age}}</span></p>
+        {{/if}}
+            {{if data.product.jiandang_img}}
+            <p class="checkData"> <img width="150px" src="{{data.product.jiandang_img}}"></p>
+            {{/if}}
+        </div>
+        <div class="content_son">
+            {{if data.product.fodder == '自制饲料'}}
+        {{if data.product.fodder_man}}
+            <p>管理人员: <span>{{data.product.fodder_man}}</span></p>
+        {{/if}}
+        {{if data.product.fodder}}
+            <p>饲料类型: <span>{{data.product.fodder}}</span></p>
+        {{/if}}
+        {{if data.product.fodder_make_method}}
+            <p>制作方法: <span>{{data.product.fodder_make_method}}</span></p>
+        {{/if}}
+        {{if data.product.fodder_contain}}
+            <p>饲料成分: <span>{{data.product.fodder_contain}}</span></p>
+        {{/if}}
+        {{if data.product.fodder_spec}}
+            <p>饲料特性: <span>{{data.product.fodder_spec}}</span></p>
+        {{/if}}
+        {{if data.product.fodder_img}}
+            <p class="checkData"> <img width="150px" src="{{data.product.fodder_img}}"></p>
+        {{/if}}
+            {{else if data.product.fodder == '普通饲料'}}
+        {{if data.product.fodder_man}}
+            <p>管理人员: <span>{{data.product.fodder_man}}</span></p>
+        {{/if}}
+        {{if data.product.fodder}}
+            <p>饲料类型: <span>{{data.product.fodder}}</span></p>
+        {{/if}}
+        {{if data.product.fodder_name}}
+            <p>饲料名称: <span>{{data.product.fodder_name}}</span></p>
+        {{/if}}
+        {{if data.product.fodder_producter}}
+            <p>生产厂家: <span>{{data.product.fodder_producter}}</span></p>
+        {{/if}}
+        {{if data.product.fodder_pro_num}}
+            <p>批准文号: <span>{{data.product.fodder_pro_num}}</span></p>
+        {{/if}}
+            {{if data.product.fodder_img}}
+            <p class="checkData"> <img width="150px" src="{{data.product.fodder_img}}"></p>
+            {{/if}}
+            {{/if}}
+        </div>
+        <div class="content_son">
+        {{if data.product.aiti_man}}
+            <p>管理人员: <span>{{data.product.aiti_man}}</span></p>
+        {{/if}}
+        {{if data.product.sampling}}
+            <p>采样日期: <span>{{data.product.sampling}}</span></p>
+        {{/if}}
+        {{if data.product.ring_num}}
+            <p>圈舍号: <span>{{data.product.ring_num}}</span></p>
+        {{/if}}
+        {{if data.product.aiti_verify_unit}}
+            <p>检测单位: <span>{{data.product.aiti_verify_unit}}</span></p>
+        {{/if}}
+        {{if data.product.aiti_verify_result}}
+            <p>检测结果: <span>{{data.product.aiti_verify_result}}</span></p>
+        {{/if}}
+            {{if data.product.aiti_img}}
+            <p class="checkData"> <img width="150px" src="{{data.product.aiti_img}}"></p>
+            {{/if}}
+        </div>
+        <div class="content_son make_progress">
+        {{if data.product.make_man}}
+            <p class="no_margin">管理人员: <span>{{data.product.make_man}}</span></p>
+        {{/if}}
+        {{if data.product.make_process}}
+            <p class="no_margin">加工过程: <span>{{#data.product.make_process}}</span></p>
+        {{/if}}
+        {{if data.product.make_room}}
+            <p class="no_margin">加工车间: <span>{{data.product.make_room}}</span></p>
+        {{/if}}
+            {{if data.product.product_bag}}
+            <p class="checkData no_margin">产品包装: <span><img width="150px" src="{{data.product.product_bag}}"></span></p>
+            {{/if}}
+        </div>
+        <div class="content_son">
+        {{if data.product.check_man}}
+            <p>管理人员: <span>{{data.product.check_man}}</span></p>
+        {{/if}}
+        {{if data.product.check_name}}
+            <p>检验名字: <span>{{data.product.check_name}}</span></p>
+        {{/if}}
+        {{if data.product.check_unit}}
+            <p>检验单位: <span>{{data.product.check_unit}}</span></p>
+        {{/if}}
+            {{if data.product.check_img}}
+            <p class="checkData">检验数据: <span><img width="150px" src="{{data.product.check_img}}"></span></p>
+            {{/if}}
+        </div>
+        <div class="content_son">
+        {{if data.product.verify_man}}
+            <p>管理人员: <span>{{data.product.verify_man}}</span></p>
+        {{/if}}
+        {{if data.product.verify_num}}
+            <p>认证编号: <span>{{data.product.verify_num}}</span></p>
+        {{/if}}
+        {{if data.product.verify_time}}
+            <p>认证日期: <span>{{data.product.verify_time}}</span></p>
+        {{/if}}
+        {{if data.product.verify_long}}
+            <p>认证期限: <span>{{data.product.verify_long}}</span></p>
+        {{/if}}
+        {{if data.product.verify_unit}}
+            <p>认证机构: <span>{{data.product.verify_unit}}</span></p>
+        {{/if}}
+            {{if data.product.verify_img}}
+            <p class="checkData"> <img width="150px" src="{{data.product.verify_img}}"></p>
+            {{/if}}
+        </div>
+    </div>
+    {{else if data.product.product_cate_id==1}}
+    <div class="tabBar_top">
+        <h3>{{data.product.name}}</h3>
+        <p>您查询的种植业条码号为：{{data.product.id}}</p>
+    </div>
+    <ul class="pull-left ul_m_wrapper" id="ul_m_wrapper">
+        <li class="active">基本信息</li>
+        <li>育苗管理</li>
+        <li>基地管理</li>
+        <li>肥料管理</li>
+        <li>农药管理</li>
+        <li>加工管理</li>
+        <li>质量检测管理</li>
+        <li>质量认证管理</li>
+    </ul>
+    <div class="content">
+        <div class="content_son">
+        {{if data.product.name}}
+            <p>产品名称: <span>{{data.product.name}}</span></p>
+        {{/if}}
+        {{if data.product.batch}}
+            <p>生产批次: <span>{{data.product.batch}}</span></p>
+        {{/if}}
+      <!--   {{if data.product.introduce}}
+            <p>产品简介: <span>{{data.product.introduce}}</span></p>
+        {{/if}} -->
+            {{if data.product.pro_img}}
+            <p class="checkData">产品图片: <span> <img width="150px" src="{{data.product.pro_img}}"></span></p>
+            {{/if}}
+        </div>
+        <div class="content_son">
+        {{if data.product.yumiaoren}}
+            <p>管理人员: <span>{{data.product.yumiaoren}}</span></p>
+        {{/if}}
+        {{if data.product.breed}}
+            <p>品种: <span>{{data.product.breed}}</span></p>
+        {{/if}}
+        {{if data.product.addr}}
+            <p>产地: <span>{{data.product.addr}}</span></p>
+        {{/if}}
+        {{if data.product.birt}}
+            <p>种植日期: <span>{{data.product.birt}}</span></p>
+        {{/if}}
+            {{if data.product.yumiao_img}}
+            <p class="checkData"> <img width="150px" src="{{data.product.yumiao_img}}"></p>
+            {{/if}}
+        </div>
+        <div class="content_son">
+        {{if data.product.baseman}}
+            <p>管理人员: <span>{{data.product.baseman}}</span></p>
+        {{/if}}
+        {{if data.product.base_name}}
+            <p>基地名称: <span>{{data.product.base_name}}</span></p>
+        {{/if}}
+        {{if data.product.manage_style}}
+            <p>管理形式: <span>{{data.product.manage_style}}</span></p>
+        {{/if}}
+        {{if data.product.area}}
+            <p>面积: <span>{{data.product.area}}</span></p>
+        {{/if}}
+        {{if data.product.soil}}
+            <p>土壤: <span>{{data.product.soil}}</span></p>
+        {{/if}}
+        {{if data.product.water}}
+            <p>水质: <span>{{data.product.water}}</span></p>
+        {{/if}}
+            {{if data.product.base_img}}
+            <p class="checkData"> <img width="150px" src="{{data.product.base_img}}"></p>
+            {{/if}}
+        </div>
+        <div class="content_son">
+        {{if data.product.manure}}
+            {{if data.product.manure==1}}
+            {{if data.product.manure_man}}
+            <p>管理人员: <span>{{data.product.manure_man}}</span></p>
+            {{/if}}
+            <p>肥料类型: <span>化学化肥</span></p>
+            {{if data.product.manure_type}}
+            {{if data.product.manure_type==1}}
+            <p>化肥类型: <span>单质</span></p>
+            {{else if data.product.manure_type==2}}
+            <p>化肥类型: <span>复合</span></p>
+            {{else if data.product.manure_type==3}}
+            <p>化肥类型: <span>生物</span></p>
+            {{/if}}
+            {{/if}}
+            {{if data.product.manure_type2}}
+            {{if data.product.manure_type2==1}}
+            <p>化肥剂型: <span>速效</span></p>
+            {{else if data.product.manure_type2==2}}
+            <p>化肥剂型: <span>缓效</span></p>
+            {{else if data.product.manure_type2==3}}
+            <p>化肥剂型: <span>缓释</span></p>
+            {{/if}}
+            {{/if}}
+            {{if data.product.manure_verify}}
+            <p>生产许可证: <span>{{data.product.manure_verify}}</span></p>
+            {{/if}}
+            {{if data.product.manure_time}}
+            <p>生产日期: <span>{{data.product.manure_time}}</span></p>
+            {{/if}}
+            {{if data.product.manure_img}}
+            <p class="checkData"> <img width="150px" src="{{data.product.manure_img}}"></p>
+            {{/if}}
+            {{else if data.product.manure==2}}
+            {{if data.product.breed}}
+            <p>管理人员: <span>{{data.product.breed}}</span></p>
+            {{/if}}
+            <p>肥料类型: <span>农家肥</span></p>
+            {{if data.product.manure_method}}
+            <p>制作方法: <span>{{data.product.manure_method}}</span></p>
+            {{/if}}
+            {{if data.product.manure_element}}
+            <p>成分: <span>{{data.product.manure_element}}</span></p>
+            {{/if}}
+            {{if data.product.manure_spe}}
+            <p>特征: <span>{{data.product.manure_spe}}</span></p>
+            {{/if}}
+            {{if data.product.manure_img}}
+            <p class="checkData"> <img width="150px" src="{{data.product.manure_img}}"></p>
+            {{/if}}
+            {{/if}}
+        {{/if}}
+        </div>
+        <div class="content_son">
+        {{if data.product.chem_man}}
+            <p>管理人员: <span>{{data.product.chem_man}}</span></p>
+        {{/if}}
+        {{if data.product.chemical_name}}
+            <p>农药名称: <span>{{#data.product.chemical_name}}</span></p>
+        {{/if}}
+         {{if data.product.chemical_obj}}
+            <p>防治对象: <span>{{data.product.chemical_obj}}</span></p>
+        {{/if}}
+         {{if data.product.chem_use_dose}}
+            <p>用药剂量:<span>{{data.product.chem_use_dose}}</span> </p>
+        {{/if}}
+         {{if data.product.chem_use_area}}
+            <p>用药面积:<span>{{data.product.chem_use_area}}</span> </p>
+        {{/if}}
+         {{if data.product.chem_type}}
+            {{if data.product.chem_type==1}}
+            <p>农药类型: <span>杀虫剂</span></p>
+            {{else if data.product.chem_type==2}}
+            <p>农药类型: <span>杀菌剂</span></p>
+            {{else if data.product.chem_type==3}}
+            <p>农药类型: <span>杀螨剂</span></p>
+            {{else if data.product.chem_type==4}}
+            <p>农药类型: <span>除草剂</span></p>
+            {{else if data.product.chem_type==5}}
+            <p>农药类型: <span>杀线虫剂</span></p>
+            {{else if data.product.chem_type==6}}
+            <p>农药类型: <span>杀鼠剂</span></p>
+            {{else if data.product.chem_type==7}}
+            <p>农药类型: <span>植物增长调节剂</span></p>
+            {{/if}}
+        {{/if}}
+         {{if data.product.chem_water_type}}
+            {{if data.product.chem_water_type==1}}
+            <p>农药剂型: <span>乳油</span></p>
+            {{else if data.product.chem_water_type==2}}
+            <p>农药剂型: <span>粉剂</span></p>
+            {{else if data.product.chem_water_type==3}}
+            <p>农药剂型: <span>可湿性粉剂</span></p>
+            {{else if data.product.chem_water_type==4}}
+            <p>农药剂型: <span>颗粒剂</span></p>
+            {{else if data.product.chem_water_type==5}}
+            <p>农药剂型: <span>悬浮剂</span></p>
+            {{else if data.product.chem_water_type==6}}
+            <p>农药剂型: <span>烟剂</span></p>
+            {{else if data.product.chem_water_type==7}}
+            <p>农药剂型: <span>水分散剂</span></p>
+            {{else if data.product.chem_water_type==8}}
+            <p>农药剂型: <span>缓蚀剂</span></p>
+            {{else if data.product.chem_water_type==9}}
+            <p>农药剂型: <span>水剂</span></p>
+            {{else if data.product.chem_water_type==10}}
+            <p>农药剂型: <span>水溶剂</span></p>
+            {{else if data.product.chem_water_type==11}}
+            <p>农药剂型: <span>其他</span></p>
+            {{/if}}
+        {{/if}}
+         {{if data.product.chem_verify}}
+            <p>生产许可证: <span>{{data.product.chem_verify}}</span></p>
+        {{/if}}
+         {{if data.product.chem_time}}
+            <p>生产日期: <span>{{data.product.chem_time}}</span></p>
+        {{/if}}
+            {{if data.product.chem_img}}
+            <p class="checkData"> <img width="150px" src="{{data.product.chem_img}}"></p>
+            {{/if}}
+        </div>
+        <div class="content_son make_progress">
+         {{if data.product.make_man}}
+            <p class="no_margin" >管理人员: <span>{{data.product.make_man}}</span></p>
+        {{/if}}
+         {{if data.product.make_room}}
+            <p class="no_margin">加工车间: <span>{{data.product.make_room}}</span></p>
+        {{/if}}
+         {{if data.product.make_process}}
+            <p class="no_margin">加工过程: <span>{{#data.product.make_process}}</span></p>
+        {{/if}}
+            {{if data.product.product_bag}}
+            <p class=" checkData no_margin">产品包装: <span><img width="150px" src="{{data.product.product_bag}}"></span></p>
+            {{/if}}
+        </div>
+        <div class="content_son">
+         {{if data.product.check_man}}
+            <p>管理人员: <span>{{data.product.check_man}}</span></p>
+        {{/if}}
+        {{if data.product.check_name}}
+            <p>检验名字: <span>{{data.product.check_name}}</span></p>
+        {{/if}}
+        {{if data.product.check_unit}}
+            <p>检验单位: <span>{{data.product.check_unit}}</span></p>
+        {{/if}}
+            {{if data.product.check_img}}
+            <p class="checkData">检验数据: <span><img width="150px" src="{{data.product.check_img}}"></span></p>
+            {{/if}}
+        </div>
+        <div class="content_son">
+        {{if data.product.verify_man}}
+            <p>管理人员: <span>{{data.product.verify_man}}</span></p>
+        {{/if}}
+        {{if data.product.verify_num}}
+            <p>认证编号: <span>{{data.product.verify_num}}</span></p>
+        {{/if}}
+        {{if data.product.verify_time}}
+            <p>认证日期: <span>{{data.product.verify_time}}</span></p>
+        {{/if}}
+        {{if data.product.verify_long}}
+            <p>认证期限: <span>{{data.product.verify_long}}</span></p>
+        {{/if}}
+        {{if data.product.verify_unit}}
+            <p>认证机构: <span>{{data.product.verify_unit}}</span></p>
+        {{/if}}
+            {{if data.product.verify_img}}
+            <p class="checkData"> <img width="150px" src="{{data.product.verify_img}}"></p>
+            {{/if}}
+        </div>
+    </div>
+    {{/if}} {{else}}
+    <div class="errorMsg">
+        {{msg}}
+    </div>
+    </div>
+    {{/if}}
+</script>
+<!-- 百度地图 -->
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=HQThy0ab95GOamZXbsE0Ld9Ucho6LrHb"></script>
 <script src="node_modules/jquery/dist/jquery.min.js"></script>
 <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="js/jquery.pagination.js"></script>
-<script src="js/pagination.js"></script>
+<!-- <script src="node_modules/vue/dist/vue.min.js"></script> -->
+<!-- <script src="node_modules/axios/dist/axios.min.js"></script> -->
+<!-- <script src="node_modules/template_js/template.js"></script> -->
+<script src="js/template.js"></script>
+<!-- <script src="js/jquery.pagination.js"></script> -->
+<!-- <script src="js/pagination.js"></script> -->
 <script src="js/husbandry.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/search.js" charset=utf-8></script>
+<script src="js/style.js"></script>
+<script>
+</script>

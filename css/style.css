@@ -1,7 +1,15 @@
-css初始化*/
+/*css初始化*/
 html,body {
 	margin: 0;
 	padding: 0;
+	height: 100%;
+}
+body {
+	position: relative;
+}
+ul {
+	padding: 0;
+	margin: 0;
 }
 ul li {
 	padding: 0;
@@ -30,8 +38,10 @@ a:hover {
 /*/css初始化*/
 /*导航*/
  section.navBar {
-	margin: 50px 200px 80px 200px;
+	margin: 0px 200px 80px 200px;
+	border: 1px solid transparent;
 	 /*height:52px;*/
+	 padding-top: 50px;
  }
  section.navBar .nav_p1 {
 	font-size: 26px;
@@ -40,24 +50,51 @@ a:hover {
  }
  section.navBar .nav_p2 {
 	font-size: 12px;
-	letter-spacing:-1px;
+	letter-spacing:2px;
  }
  section.navBar .search {
  	position:relative;
  	border: 2px solid #CA942A;
- 	height: 28px;
+ 	height: 38px;
+ 	margin-top: 5px;
  }
+ section.navBar .search ul li {
+        list-style: none;
+        /*float: left;*/
+        width: 100px;
+        background: #FDDB93;
+        text-align: center;
+        cursor: pointer;
+    }
+     section.navBar .search #main li {
+     	height: 34px;
+     	left: 0;
+     	position: absolute;
+     	line-height: 34px;
+     }
+section.navBar .search .drop {
+  	display: none;
+    position: absolute;
+    top: 34px;
+    left: 0px;
+    z-index: 1000;
+    border-top: 1px solid #DEBD78;
+}
+
+section.navBar .search .drop li:hover {
+  background:#66A7ED;
+}
  section.navBar .search input {
  	 /*border: 2px solid #CA942A;*/
  	width: 60%;
  	outline: none;
  	border:0;
- 	height: 24px;
+ 	height: 34px;
  	position:absolute;
- 	left:96px;
+ 	left:102px;
 
  }
- section.navBar .search .select_id {
+/* section.navBar .search .select_id {
 	position: absolute;
     left: -2px;
     top: 0px;
@@ -65,32 +102,27 @@ a:hover {
     padding: 0 16px 0 8px;
     background: #FDDB93;
     font-size: 12px;
-    height: 24px;
+    height: 34px;
     border: 0;
     outline: none;
     border-left: 2px solid #CA942A;
- }
- section.navBar .search .select_id option {
- 	border:0;
- }
- section.navBar .search span:nth-of-type(1) {
- 	padding: 0 18px;
-    background: #CA942A;
-    line-height: 26px;
-    height: 26px;
-    display: inline-block;
-    margin-left: -4px;
-    top: -1px;
+ }*/
+ section.navBar .search #search {
+ 	position: absolute;
     right: -2px;
-    position: absolute;
-    color: #fff;
+    width: 64px;
+    height: 34px;
+    border: 0;
+    background: #FDDB93;
     cursor: pointer;
+    outline: none;
+    border-right: 2px solid #CA942A;
  }
  section.navBar .search i {
  	position: absolute;
-	top: 0px;
-	left: 59px;
-	line-height: 24px;
+	top: -1px;
+	left: 83px;
+	line-height: 34px;
 	font-size: 12px;
 	transform:scale(0.7);
  }
@@ -142,4 +174,8 @@ a:hover {
 	font-size: 1vw;
 	line-height: 100px;
 }
+/*.footer {
+	position:absolute;
+	bottom:0;
+}*/
 /*/footer*/

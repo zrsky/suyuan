@@ -1,6 +1,11 @@
 /*news_status*/
+.tsProduct {
+	min-height:667px;
+	margin-bottom: 50px;
+}
 .tsProduct .top_img {
 	position: relative;
+	top: 18px;
 }
 .tsProduct .top_img img {
 	width: 100%;
@@ -12,6 +17,9 @@
 	font-size: 1vw;
 	color: #fff;
 }
+.tsProduct .top_img p a {
+  color: #fff!important;
+}
 .tsProduct .tsProduct_content {
 	margin-top: 40px;
 }
@@ -21,11 +29,20 @@
 .tsProduct .tsProduct_content ul li {
 	float: left;
 	margin: 0 10px;
+	height: 301px
+}
+.tsProduct .tsProduct_content ul li p {
+	overflow:hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	width: 241px;
 }
 .tsProduct .tsProduct_content ul li p:nth-of-type(1) {
 	margin-top: 10px;
 }
-.tsProduct .tsProduct_content ul li p:nth-of-type(2) {
+.tsProduct .tsProduct_content ul li p:nth-of-type(2),
+.tsProduct .tsProduct_content ul li p:nth-of-type(4)
+ {
 	margin-bottom: 20px;
 	color: #8D8C8C;
 }

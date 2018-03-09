@@ -1,60 +1,66 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<meta charset="utf-8">
-	<title>特色产品</title>
-	<link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <meta charset="utf-8">
+    <title>特色产品</title>
+    <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/pagination.css">
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/tsProduct.css">
 </head>
+
 <body>
-	<section class="navBar hidden-xs">
+    <section class="navBar hidden-xs">
         <div class="col-md-8 col-sm-12">
-            <a href="./index.html"><p class="nav_p1">延津县农产品质量安全追溯平台</p>
-            <p class="nav_p2">YANJIN AGRICUL TURAL PRODUCT QUALITY SAFETY SAFETY TRACEABIUTY PLATFORM</p></a>
+            <p class="nav_p1"><a href="./index.html">延津县电子商务平台</a></p>
+            <p class="nav_p2"><a href="./index.html">Yanjin County E-commerce Platform</a></p>
         </div>
-        <select class="select_id" style="visibility:hidden;">
-            <option value="1">新闻动态</option>
-            <option value="2">企业展示</option>
-            <option value="3">特色产品</option>
-            <option value="4">农家课堂</option>
-        </select>
         <div class="col-md-4 col-sm-12 search">
-            <input id="oInput" type="text" name="">
-            <!-- <span>新闻动态</span> -->
-            <select class="select_id">
-                <option value="1">新闻动态</option>
-                <option value="2">企业展示</option>
-                <option value="3">特色产品</option>
-                <option value="4">农家课堂</option>
-            </select>
-            <!-- <i class="glyphicon glyphicon-triangle-bottom
-            glyphicon glyphicon-"></i> -->
-            <span>搜索</span>
+            <form id="searchForm" action="#">
+                <input id="oInput" type="text" name="keyword">
+                <!-- <span>新闻动态</span> -->
+                <ul id="main">
+                    <li>特色产品</li>
+                </ul>
+                <ul id="drop" class="drop">
+                    <li>新闻动态</li>
+                    <li>特色产品</li>
+                    <li>企业展示</li>
+                    <li>农家课堂</li>
+                </ul>
+                <i class="glyphicon glyphicon-triangle-bottom
+                glyphicon glyphicon-"></i>
+                <button type="submit" id="search">搜索</button>
+            </form>
         </div>
     </section>
     <section class="tsProduct">
         <div class="top_img">
-            <img src="images/news.png" alt="">
-            <p>特色产品</p>
+            <img src="images/news.jpg" alt="">
+            <p><a href="index.html#banner_2">特色产品</a></p>
         </div>
         <div class="tsProduct_content">
             <div class="container">
-               <ul>
-                   <li><img src="images/ts1.png" alt=""><p>农产品名称</p><p>农产品信息</p>
-                   </li>
-                   <li><img src="images/ts1.png" alt=""><p>万向创新聚能量</p><p>该公司聚集了各种各样的人才，堪称</p></li>
-                   <li><img src="images/ts1.png" alt=""><p>万向创新聚能量</p><p>该公司聚集了各种各样的人才，堪称</p></li>
-                   <li><img src="images/ts1.png" alt=""><p>万向创新聚能量</p><p>该公司聚集了各种各样的人才，堪称</p></li>
-                   <li><img src="images/ts1.png" alt=""><p>万向创新聚能量</p><p>该公司聚集了各种各样的人才，堪称</p></li>
-                   <li><img src="images/ts1.png" alt=""><p>万向创新聚能量</p><p>该公司聚集了各种各样的人才，堪称</p></li>
-                   <li><img src="images/ts1.png" alt=""><p>万向创新聚能量</p><p>该公司聚集了各种各样的人才，堪称</p></li>
-                   <li><img src="images/ts1.png" alt=""><p>万向创新聚能量</p><p>该公司聚集了各种各样的人才，堪称</p></li>
-                   <li><img src="images/ts1.png" alt=""><p>万向创新聚能量</p><p>该公司聚集了各种各样的人才，堪称</p></li>
-                   <li><img src="images/ts1.png" alt=""><p>万向创新聚能量</p><p>该公司聚集了各种各样的人才，堪称</p></li>
-               </ul>
-               <div class="pagination"></div>
+                <ul id="tsProduct_ul">
+                    <script id="tsProduct_templ" type="text/html">
+                    {{if data!=0}}
+                        {{each data as value}}
+                        <li><a href="./tsProductDetail.html?id={{value.pid}}">
+                            <img width="241" height="221" src="{{value.pro_img}}" alt="{{value.pro_img}}">
+                            <p class="product_name">{{value.title}}</p>
+                            <p class="product_intro">{{value.description}}</p>
+                            <p class="product_name">{{value.name}}</p>
+                            <p class="product_intro">{{value.introduce}}</p>
+                        </a>
+                        </li>
+                        {{/each}}
+                    {{else}}
+                        <p style="font-size:20px;text-align:center;margin-top:200px;">找不到你搜索的内容</p>
+                    {{/if}}
+                    </script>
+                </ul>
+                <div class="pagination"></div>
             </div>
         </div>
     </section>
@@ -75,11 +81,94 @@
                 <div class="col-md-1 col-sm-1 col-xs-1 f2_4">号</div>
             </div>
         </div>
-        <div class="col-md-4 col-sm-3 col-xs-6 f3">Copyright @ 2017</div>
+        <div class="col-md-4 col-sm-3 col-xs-6 f3">Copyright © 2017</div>
     </section>
 </body>
+
 </html>
 <script src="node_modules/jquery/dist/jquery.min.js"></script>
 <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="js/template.js"></script>
 <script src="js/jquery.pagination.js"></script>
-<script src="js/pagination.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/search.js" charset=utf-8></script>
+<script src="js/style.js"></script>
+<script charset=utf-8>
+$(function() {
+    var name = window.location.search.substring(1).split("=")[0];
+    var id = window.location.search.split("=")[1];
+    var url = '';
+    var a = 'keyword';
+
+    if (name == a) {
+        url = URL + '/index/products/index/keyword/' + id;
+    } else {
+        url = URL + '/index/products/index';
+    }
+    $.ajax({
+        url: url,
+        type: 'post',
+        dataType: 'json',
+        async: false,
+        success: function(msg) {
+            if (msg.data.length < 12) {
+                $(".pagination").css({ 'display': 'none' });
+            }
+            var html = template('tsProduct_templ', msg);
+            $('#tsProduct_ul').html(html);
+            // 分页
+            if (name != "keyword") {
+                $(".pagination").pagination({
+                    coping: true,
+                    pageCount: Math.ceil(msg.total/12),
+                    homePage: '首页',
+                    endPage: '末尾',
+                    prevContent: '上页',
+                    nextContent: '下页',
+                    callback: function(api) {
+                        var data = {
+                            page: api.getCurrent(),
+                        };
+                        // console.log(api.getCurrent());
+                        $.ajax({
+                            url: url,
+                            type: 'post',
+                            data: data,
+                            dataType: 'json',
+                            async: false,
+                            success: function(data) {
+                                var html = template('tsProduct_templ', data);
+                                $('#tsProduct_ul').html(html);
+                                // limit($(".product_name"), 16);
+                                // limit($(".product_intro"), 16);
+                                // limit($(".course_intro"), 16);
+                            },
+                            error: function(err) {
+                                console.log(err)
+                            }
+                        })
+                    }
+                })
+            }
+
+            //省略多余字体
+            // function limit(ele, num) {
+            //     for (var i = 0; i < ele.length; i++) {
+            //         if (ele.eq(i).html().length > num) {
+            //             var content = ele.eq(i).html().substring(0, num);
+            //             ele.eq(i).html(content + '...');
+            //         }
+            //     }
+            // }
+
+            // limit($(".product_name"), 16);
+            // limit($(".product_intro"), 16);
+            // limit($(".course_intro"), 16);
+        },
+        error: function(xhr) {
+
+            console.log(xhr)
+        }
+    })
+})
+</script>

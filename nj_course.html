@@ -1,70 +1,77 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<meta charset="utf-8">
-	<title>特色产品</title>
-	<link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <meta charset="utf-8">
+    <title>农家课堂</title>
+    <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/pagination.css">
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/nj_course.css">
 </head>
+
 <body>
-	<section class="navBar hidden-xs">
+    <section class="navBar hidden-xs">
         <div class="col-md-8 col-sm-12">
-           <a href="./index.html"><p class="nav_p1">延津县农产品质量安全追溯平台</p>
-            <p class="nav_p2">YANJIN AGRICUL TURAL PRODUCT QUALITY SAFETY SAFETY TRACEABIUTY PLATFORM</p></a>
+            <p class="nav_p1"><a href="./index.html">延津县电子商务平台</a></p>
+            <p class="nav_p2"><a href="./index.html">Yanjin County E-commerce Platform</a></p>
         </div>
-        <select class="select_id" style="visibility:hidden;">
-            <option value="1">新闻动态</option>
-            <option value="2">企业展示</option>
-            <option value="3">特色产品</option>
-            <option value="4">农家课堂</option>
-        </select>
         <div class="col-md-4 col-sm-12 search">
-            <input id="oInput" type="text" name="">
-            <!-- <span>新闻动态</span> -->
-            <select class="select_id">
-                <option value="1">新闻动态</option>
-                <option value="2">企业展示</option>
-                <option value="3">特色产品</option>
-                <option value="4">农家课堂</option>
-            </select>
-            <!-- <i class="glyphicon glyphicon-triangle-bottom
-            glyphicon glyphicon-"></i> -->
-            <span>搜索</span>
+            <form id="searchForm" action="#">
+                <input id="oInput" type="text" name="keyword">
+                <!-- <span>新闻动态</span> -->
+                <ul id="main">
+                    <li>农家课堂</li>
+                </ul>
+                <ul id="drop" class="drop">
+                    <li>新闻动态</li>
+                    <li>特色产品</li>
+                    <li>企业展示</li>
+                    <li>农家课堂</li>
+                </ul>
+                <i class="glyphicon glyphicon-triangle-bottom
+                glyphicon glyphicon-"></i>
+                <button type="submit" id="search">搜索</button>
+            </form>
         </div>
     </section>
     <section class="nj_course">
-        <div class="top_img">
-            <img src="images/news.png" alt="">
-            <p>农家讲堂/粮食作物</p>
+        <div class="top_img" id="top_img_wrapper">
+            <script id="category_templ" type="text/html">
+                <img src="images/news.jpg" alt="">
+                <!-- <p>农家讲堂/粮食作物</p> -->
+                <p><a href="index.html#nj_course">农家讲堂</a>
+                {{if cate_name}}
+                 >
+                    <span id="title">{{cate_name}}</span>
+                {{/if}}
+                </p>
+            </script>
         </div>
         <div class="nj_course_content">
-            <div class="container">
-              <div class="top_nav"><a href="index.html">农家讲堂</a> > 粮食作物</div>
-               <ul class="nj_ul">
+            <div class="container" id="category_wrapper">
+            <script id="category_templ1" type="text/html">
+            {{if cate_name}}
+                <div class="top_nav"><span id="title">{{cate_name}}</span></div>
+            {{else}}
+                <div class="top_nav"><span id="title">农家课堂</span></div>
+            {{/if}}
+            </script>
+                <ul class="nj_ul" id="nj_wrapper">
+                    <script id="nj_templ" type="text/html">
+                    {{if data.data!=0}}
+                        {{each data.data as value}}
                         <li>
-                            <a href="#"><img src="images/n1.png" alt="">
-                            <div class="hidden-xs word_wraper"><span>讲堂名称</span><p>讲堂详细内容介绍讲堂详细内容介绍</p></div>
+                            <a href="./courseDetail.html?id={{value.id}}"><img src="{{value.thumb}}" alt="{{value.thumb}}" width="241" height="221">
+                            <div class="hidden-xs word_wraper"><span class="courseTitle">{{value.title}}</span><p class="njDescription">{{value.description}}</p></div>
                             </a></li>
-                        <li>
-                            <a href="#"><img src="images/n1.png" alt=""><div class="hidden-xs word_wraper"><span>讲堂名称</span><p>讲堂详细内容介绍讲堂详细内容介绍</p></div></a></li>
-                        <li>
-                            <a href="#"><img src="images/n1.png" alt=""><div class="hidden-xs word_wraper"><span>讲堂名称</span><p>讲堂详细内容介绍讲堂详细内容介绍</p></div></a></li>
-                        <li>
-                            <a href="#"><img src="images/n1.png" alt=""><div class="hidden-xs word_wraper"><span>讲堂名称</span><p>讲堂详细内容介绍讲堂详细内容介绍</p></div></a></li>
-                        <li>
-                            <a href="#"><img src="images/n1.png" alt="">
-                            <div class="hidden-xs word_wraper"><span>讲堂名称</span><p>讲堂详细内容介绍讲堂详细内容介绍</p></div>
-                            </a></li>
-                        <li>
-                            <a href="#"><img src="images/n1.png" alt=""><div class="hidden-xs word_wraper"><span>讲堂名称</span><p>讲堂详细内容介绍讲堂详细内容介绍</p></div></a></li>
-                        <li>
-                            <a href="#"><img src="images/n1.png" alt=""><div class="hidden-xs word_wraper"><span>讲堂名称</span><p>讲堂详细内容介绍讲堂详细内容介绍</p></div></a></li>
-                        <li>
-                            <a href="#"><img src="images/n1.png" alt=""><div class="hidden-xs word_wraper"><span>讲堂名称</span><p>讲堂详细内容介绍讲堂详细内容介绍</p></div></a></li>
-                    </ul>
-               <div class="pagination"></div>
+                        {{/each}}
+                    {{else}}
+                         <p style="font-size:20px;text-align:center;margin-top:200px;">找不到你搜索的内容</p>
+                    {{/if}}
+                    </script>
+                </ul>
+                <div class="pagination"></div>
             </div>
         </div>
     </section>
@@ -85,11 +92,111 @@
                 <div class="col-md-1 col-sm-1 col-xs-1 f2_4">号</div>
             </div>
         </div>
-        <div class="col-md-4 col-sm-3 col-xs-6 f3">Copyright @ 2017</div>
+        <div class="col-md-4 col-sm-3 col-xs-6 f3">Copyright © 2017</div>
     </section>
 </body>
+
 </html>
 <script src="node_modules/jquery/dist/jquery.min.js"></script>
 <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="js/template.js"></script>
 <script src="js/jquery.pagination.js"></script>
 <script src="js/pagination.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/search.js" charset=utf-8></script>
+<script src="js/style.js"></script>
+<script>
+$(function() {
+    var name = window.location.search.substring(1).split("=")[0];
+    var id = window.location.search.split("=")[1];
+    var url = '';
+    var a = 'keyword';
+    if (name == a) {
+        url = URL + '/index/article/index/keyword/' + id;
+    } else {
+        url = URL + '/index/article/index/article_cate_id/' + id;
+        //     switch(id){
+        //     case '6':
+        //         $("#title").html('粮食作物');
+        //         console.log(111)
+        //         break;
+        //     case '7':
+        //         $("#title").html('经济作物');
+        //         break;
+        //     case '8':
+        //         $("#title").html('食用菌种植');
+        //         break;
+        //     case '9':
+        //         $("#title").html('蔬菜种植');
+        //         break;
+        // }
+    }
+
+
+    $.ajax({
+        url: url,
+        type: 'get',
+        dataType: 'json',
+        async: false,
+        success: function(msg) {
+            if (msg.data.data.length < 12) { $(".pagination").css({ 'display': 'none' }); }
+            var html = template('nj_templ', msg);
+            $("#nj_wrapper").html(html);
+            var html = template('category_templ', msg);
+            $("#top_img_wrapper").html(html);
+            var html = template('category_templ1', msg);
+            $("#category_wrapper").prepend(html);
+            // 分页
+            if (name != "keyword") {
+                $(".pagination").pagination({
+                    coping: true,
+                    pageCount: Math.ceil(msg.data.total/12),
+                    homePage: '首页',
+                    endPage: '末尾',
+                    prevContent: '上页',
+                    nextContent: '下页',
+                    callback: function(api) {
+                        var data = {
+                            page: api.getCurrent(),
+                        };
+                        $.ajax({
+                            url: url,
+                            type: 'post',
+                            data: data,
+                            dataType: 'json',
+                            async: false,
+                            success: function(data) {
+                                var html = template('nj_templ', data);
+                                $("#nj_wrapper").html(html);
+                                // limit($(".courseTitle"), 13);
+                                // limit($(".enterprise_intro"), 23);
+                                // limit($(".njDescription"), 16);
+                            },
+                            error: function(err) {
+                                console.log(err)
+                            }
+                        })
+                    }
+                })
+            }
+            //省略多余字体
+            // function limit(ele, num) {
+            //     for (var i = 0; i < ele.length; i++) {
+            //         if (ele.eq(i).html().length > num) {
+            //             var content = ele.eq(i).html().substring(0, num - 1);
+            //             ele.eq(i).html(content + '...');
+            //         }
+            //     }
+            // }
+
+            // limit($(".courseTitle"), 13);
+            // limit($(".enterprise_intro"), 23);
+            // limit($(".njDescription"), 16);
+        },
+        error: function(xhr) {
+
+            console.log(xhr)
+        }
+    })
+})
+</script>

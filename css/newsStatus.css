@@ -1,6 +1,19 @@
 /*news_status*/
+.news_status {
+  min-height: 667px;
+  margin-bottom: 50px;
+}
 .news_status .top_img {
 	position: relative;
+  top: 18px;
+  display: inline-block;
+  width: 100%;
+}
+.news_status .top_img .back {
+  width: 1.3vw;
+  margin-right: 5px;
+  display: inline-block;
+  margin-top: -4px;
 }
 .news_status .top_img p {
 	position: absolute;
@@ -9,12 +22,22 @@
 	font-size: 1vw;
 	color: #fff;
 }
+.news_status .top_img p a {
+  color: #fff!important;
+}
 .news_status .top_img img {
   width: 100%;
 }
 .news_status .news_status_content {
-	margin-top: 40px;
+  margin-top: 40px;
 }
+.news_status .news_status_content .list-group-item  {
+	cursor: pointer;
+}
+.news_status .news_status_content .list-group-item:nth-of-type(1) {
+  border-top: none;
+}
+
 /*/news_status*/
 /*bootstrap源码*/
 .panel-suyuan {
@@ -26,6 +49,7 @@
   border-bottom: 1px dashed #ddd;
   height: 50px;
   line-height: 29px;
+  font-size: 18px;
 }
 .panel > .list-group,
 .panel > .list-group {
@@ -38,9 +62,12 @@
   color: #AFAFAF;
 
 }
+.panel > .list-group .list-group-item a {
+  color: #AFAFAF;
+}
 .panel > .list-group .list-group-item:last-child {
-	margin-bottom: 200px;
-	text-align: center;
+	/*margin-bottom: 200px;*/
+	/*text-align: center;*/
 }
 .panel > .list-group:first-child .list-group-item:first-child {
   border-top: 0;
@@ -59,4 +86,58 @@
 .panel-heading + .list-group .list-group-item:first-child {
   border-top-width: 0;
 }
+/*panel-wraning*/
+.panel-warning {
+  /*background: #f5f5f5!important;*/
+  border:0;
+  box-shadow: none;
+}
+/*.panel-warning #pannel_wrapper p span {
+  background: #f5f5f5!important;
+}*/
+/*.panel-warning #pannel_wrapper p span:first-child {
+  text-indent: 2em;
+  display: inline-block;
+}*/
+.panel-warning > .panel-heading {
+  color: #8a6d3b;
+  /*background-color: #f5f5f5;*/
+  border:0;
+  padding: 0!important;
+  color
+}
+.panel-warning > .panel-heading > h1 {
+  text-align: center!important;
+}
+.panel-warning > .panel-body {
+  /*border-top-color: #faebcc;*/
+  /*background: #f5f5f5;*/
+  border:0;
+}
+.panel-warning > .panel-body > p {
+  text-indent: 2em;
+}
+.panel-warning > .panel-heading .badge {
+  color: #fcf8e3;
+  /*background-color: #f5f5f5;*/
+}
+.panel-warning > .panel-footer {
+  border:0;
+  background: #fff;
+  text-align: center;
+}
+.panel-warning #pannel_wrapper div.imgWrap {
+  text-align: center;
+}
+.panel-warning #pannel_wrapper div.imgWrap img {
+    width: 485px;
+}
+.panel-warning #pannel_wrapper .companyMessage p {
+  margin-left: 40px;
+  margin-top: 30px;
+}
+.panel-warning #pannel_wrapper h1 {
+  text-align: center;
+}
+/*/panel-wraning*/
 /*/bootstrap源码*/

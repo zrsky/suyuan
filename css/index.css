@@ -1,6 +1,9 @@
+
 /*轮播图*/
 section.carousel {
 	position:relative;
+	top: 18px;
+	display: inline-block;
 }
 section.carousel img{
 	width: 100%;
@@ -54,7 +57,8 @@ section.zsSearch button {
 /*/农产品追溯查询*/
 /*banner_1*/
 section.banner_1 {
-	height: 100px;
+	/*height: 300px;*/
+	position: relative;
 }
 section.banner_1 ul.nav {
 	border:0;
@@ -71,8 +75,7 @@ section.banner_1 ul li a {
 	border:0;
 	padding: 0;
 	color:#898585;
-	display:inline-block;
-	
+	/*display:inline-block;*/
 	width: 100%;
 	height: 100%;
 	line-height: 35px;
@@ -87,10 +90,21 @@ section.banner_1 .tab-content {
 section.banner_1 .tab-content .more {
 	color: #F78384;
 	padding-right: 10px;
+	/*position: absolute;
+	top: 90%;
+	left: 90%;*/
 }
 section.banner_1 .tab-content img {
 	border-radius: 10px;
 	padding: 0;
+	width: 130px;
+	height: 110px;
+}
+section.banner_1 .tab-content #status img + img {
+	display:none;
+}
+section.banner_1 .tab-content #business img + img {
+	display:none;
 }
 section.banner_1 .tab-content .empty {
 	height: 118px!important;
@@ -98,6 +112,9 @@ section.banner_1 .tab-content .empty {
 section.banner_1 .tab-content ul li {
 	margin:8px 0;
 	cursor:pointer;
+	overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
     color: #555;
@@ -169,7 +186,7 @@ section.banner_2 .content ul li img {
 	border-radius: 7px;
 }
 section.banner_2 .content .img_Wraper ul li div {
-	height: 74px;
+	height: 44px;
 	background: rgba(0,0,0,0.5);
 	position:absolute;
 	top: 140px;
@@ -178,19 +195,15 @@ section.banner_2 .content .img_Wraper ul li div {
 	padding: 15px;
 	border-radius: 0 0 7px 7px;
 	font-size: 16px;
-	transition: top 1s;
 }
-section.banner_2 .content .img_Wraper ul li div:hover {
+section.banner_22 .content .img_Wraper ul li div {
+		height:44px;
+		/*transition: top 1s;*/
+}
+/*section.banner_22 .content .img_Wraper ul li div:hover {
 	top:110px;
-}
-// @keyframes topchange {
-// 	from {
-// 		top:140px;
-// 	}
-// 	to {
-// 		top:110px;
-// 	}
-// }
+}*/
+
 section.banner_2 .content .img_Wraper ul li div p:nth-of-type(2) {
 	font-size: 12px;
 }
@@ -275,11 +288,15 @@ section.banner_4 .content ul li img {
 section.banner_4 .content ul li .word_wraper {
 	background:#F5F5F5;
 	padding: 0 10px 10px 10px;
+	margin-bottom: 10px;
+	overflow:hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
 section.banner_4 .content ul li span {
 	display:inline-block;
 	margin: 12px 0;
-	font-size: 17px;
+	font-size: 1vw;
 }
 section.banner_4 .more {
 	color: #F78384;
@@ -313,8 +330,21 @@ section.banner_5 .content {
 	text-align: center;
 
 }
+section.banner_5 .content .canvasDraw .tj_yuan ul {
+	padding: 0 20px;
+	border: 1px solid #EAEAEA;
+	margin-top: 20px;
+}
+section.banner_5 .content .canvasDraw .tj_yuan ul li {
+	float: left;
+	display: inline-block!important;
+	margin: 20px 0 20px 30px;
+}
+section.banner_5 .content .canvasDraw .tj_yuan ul li p {
+	font-size: 20px;
+}
 section.banner_5 .content .map_wrapper {
-	height: 24vw;
+	height: 30vw;
 }
 /*/banner_5*/
 /*banner_6*/
@@ -340,6 +370,16 @@ section.banner_6 .content {
 
 }
 /*/banner_6*/
+/*百度地图图标*/
+.BMap_cpyCtrl {
+    display: none;
+}
+
+.anchorBL {
+    display: none;
+}
+
+/*/百度地图图标*/
 /*bootstrap源码*/
 .btn-suyuan {
   color: #fff;

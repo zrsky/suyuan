@@ -1,7 +1,13 @@
 /*husbandry*/
-
+.husbandry {
+  min-height: 667px;
+  margin-bottom: 8px;
+}
 .husbandry .top_img {
     position: relative;
+    top: 18px;
+    display: inline-block;
+    width: 100%;
 }
 
 .husbandry .top_img p {
@@ -11,7 +17,15 @@
     font-size: 1vw;
     color: #fff;
 }
-
+.husbandry .top_img p a {
+  color: #fff!important;
+}
+.husbandry .top_img .back {
+  width: 1.3vw;
+  margin-right: 5px;
+  display: inline-block;
+  margin-top: -4px;
+}
 .husbandry .top_img img {
     width: 100%;
 }
@@ -19,15 +33,20 @@
 .husbandry .husbandry_content {
     margin-top: 40px;
 }
-
 .husbandry .husbandry_content .tabBar {
     background: #EFF3A5;
     border-radius: 4px;
     padding: 5px 20px;
-    height: 450px;
+    min-height: 450px;
     margin-bottom: 100px;
+    position: relative;
 }
-
+.husbandry .husbandry_content .tabBar .errorMsg {
+    text-align: center;
+    line-height: 450px;
+    font-size: 27px;
+    color:red;
+}
 .husbandry .husbandry_content .tabBar .tabBar_top {
     border-bottom: 1px solid #B9B7B7;
 }
@@ -44,7 +63,7 @@
 .husbandry .husbandry_content .tabBar li {
     color: #ABAAAA;
     padding: 8px 0 8px 20px;
-    width: 120px;
+    /*width: 120px;*/
     border-bottom: 1px solid #ccc;
     cursor: pointer;
 }
@@ -55,12 +74,103 @@
     display: inline-block;
     margin: 15px 0 0 40px;
     color: #7C7C7C;
+    width: 80%;
+}
+@media screen and (max-width: 407px) {
+    .husbandry .husbandry_content .tabBar .content {
+      width: 40%;
+    }
+}
+@media screen and (min-width: 408px) and (max-width: 620px) {
+    .husbandry .husbandry_content .tabBar .content {
+      width: 50%;
+    }
+}
+@media screen and (min-width: 621px) and (max-width: 991px) {
+    .husbandry .husbandry_content .tabBar .content {
+      width: 70%;
+    }
+}
+.husbandry .husbandry_content .tabBar .content p {
+  background: none!important;
+  padding-bottom: 10px;
+}
+.husbandry .husbandry_content .tabBar .content p.font14g {
+  margin-left: 63px;
 }
 .husbandry .husbandry_content .tabBar .content .content_son {
   display: none;
 }
+
+.husbandry .husbandry_content .tabBar .content .make_progress p {
+  margin-left: 30px;
+}
+.husbandry .husbandry_content .tabBar .content .make_progress h3 {
+   margin-left: 30px!important;
+}
+.husbandry .husbandry_content .tabBar .content .make_progress p.no_margin {
+  margin-left: 0;
+}
 .husbandry .husbandry_content .tabBar .content .content_son:first-child {
   display: inline-block;
 }
+/*css3loading*/
+@-webkit-keyframes line-scale {
+  0% {
+    -webkit-transform: scaley(1);
+            transform: scaley(1); }
 
-/*/husbandry*/
+  50% {
+    -webkit-transform: scaley(0.4);
+            transform: scaley(0.4); }
+
+  100% {
+    -webkit-transform: scaley(1);
+            transform: scaley(1); } }
+@keyframes line-scale {
+  0% {
+    -webkit-transform: scaley(1);
+            transform: scaley(1); }
+
+  50% {
+    -webkit-transform: scaley(0.4);
+            transform: scaley(0.4); }
+
+  100% {
+    -webkit-transform: scaley(1);
+            transform: scaley(1); } }
+
+.loader {
+    text-align: center;
+    line-height: 450px;
+}
+.line-scale {
+    display: inline-block;
+}
+.line-scale > div:nth-child(1) {
+  -webkit-animation: line-scale 1s 0.1s infinite cubic-bezier(.2, .68, .18, 1.08);
+          animation: line-scale 1s 0.1s infinite cubic-bezier(.2, .68, .18, 1.08); }
+.line-scale > div:nth-child(2) {
+  -webkit-animation: line-scale 1s 0.2s infinite cubic-bezier(.2, .68, .18, 1.08);
+          animation: line-scale 1s 0.2s infinite cubic-bezier(.2, .68, .18, 1.08); }
+.line-scale > div:nth-child(3) {
+  -webkit-animation: line-scale 1s 0.3s infinite cubic-bezier(.2, .68, .18, 1.08);
+          animation: line-scale 1s 0.3s infinite cubic-bezier(.2, .68, .18, 1.08); }
+.line-scale > div:nth-child(4) {
+  -webkit-animation: line-scale 1s 0.4s infinite cubic-bezier(.2, .68, .18, 1.08);
+          animation: line-scale 1s 0.4s infinite cubic-bezier(.2, .68, .18, 1.08); }
+.line-scale > div:nth-child(5) {
+  -webkit-animation: line-scale 1s 0.5s infinite cubic-bezier(.2, .68, .18, 1.08);
+          animation: line-scale 1s 0.5s infinite cubic-bezier(.2, .68, .18, 1.08); }
+.line-scale > div {
+  background-color: #fff;
+  width: 4px;
+  height: 35px;
+  border-radius: 2px;
+  margin: 2px;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+  display: inline-block; }
+/*/css3loading*/
+
+/*/husbandry

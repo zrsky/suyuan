@@ -1,45 +1,48 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 
 <head>
-    <meta charset="utf-8">
+    <meta charset="utf8">
+    <meta http-equiv="X-UA-Compatible" content="IE=9" />
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>首页</title>
     <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/index.css">
-    <link rel="stylesheet" type="text/css" href="css/pagination.css">
+    <!-- <link rel="stylesheet" type="text/css" href="css/pagination.css"> -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
     <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=HQThy0ab95GOamZXbsE0Ld9Ucho6LrHb"></script>
+    <script>
+    var ROOT = '_ROOT_';
+    </script>
 </head>
 
 <body>
     <section class="navBar hidden-xs">
         <div class="col-md-8 col-sm-12">
-        <a href="./index.html"><p class="nav_p1">延津县农产品质量安全追溯平台</p>
-            <p class="nav_p2">YANJIN AGRICUL TURAL PRODUCT QUALITY SAFETY SAFETY TRACEABIUTY PLATFORM</p></a>
+            <p class="nav_p1"><a href="./index.html">延津县电子商务平台</a></p>
+            <p class="nav_p2"><a href="./index.html">Yanjin County E-commerce Platform</a></p>
         </div>
-        <select class="select_id" style="visibility:hidden;">
-            <option value="1">新闻动态</option>
-            <option value="2">企业展示</option>
-            <option value="3">特色产品</option>
-            <option value="4">农家课堂</option>
-        </select>
         <div class="col-md-4 col-sm-12 search">
-            <input id="oInput" type="text" name="">
-            <!-- <span>新闻动态</span> -->
-            <select class="select_id">
-                <option value="1">新闻动态</option>
-                <option value="2">企业展示</option>
-                <option value="3">特色产品</option>
-                <option value="4">农家课堂</option>
-            </select>
-            <!-- <i class="glyphicon glyphicon-triangle-bottom
-            glyphicon glyphicon-"></i> -->
-            <span>搜索</span>
+            <form id="searchForm" action="#">
+                <input id="oInput" type="text" name="keyword">
+                <!-- <span>新闻动态</span> -->
+                <ul id="main">
+                    <li>新闻动态</li>
+                </ul>
+                <ul id="drop" class="drop">
+                    <li>新闻动态</li>
+                    <li>特色产品</li>
+                    <li>企业展示</li>
+                    <li>农家课堂</li>
+                </ul>
+                <i class="glyphicon glyphicon-triangle-bottom
+                glyphicon glyphicon-"></i>
+                <button type="submit" id="search">搜索</button>
+            </form>
         </div>
     </section>
     <section class="carousel">
@@ -53,13 +56,13 @@
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role="listbox">
                 <div class="item active">
-                    <img src="images/web.png" alt="...">
+                    <img src="images/web.jpg" alt="...">
                 </div>
                 <div class="item">
-                    <img src="images/web.png" alt="...">
+                    <img src="images/web.jpg" alt="...">
                 </div>
                 <div class="item">
-                    <img src="images/web.png" alt="...">
+                    <img src="images/web.jpg" alt="...">
                 </div>
             </div>
             <!-- Controls -->
@@ -72,20 +75,15 @@
             <span class="sr-only">Next</span>
           </a>
         </div>
-        <div class="word">
-            <p class="col-md-3 col-sm-3 col-xs-3">加工</p>
-            <p class="col-md-2 col-sm-2 col-xs-2">生产</p>
-            <p class="col-md-2 col-sm-2 col-xs-2">流通</p>
-            <p class="col-md-2 col-sm-2 col-xs-2">消费</p>
-            <p class="col-md-3 col-sm-3 col-xs-3">销售</p>
-        </div>
     </section>
     <section class="zsSearch">
         <h1>农产品质量安全追溯查询</h1>
-        <input type="text" class="form-control" name="">
-        <a href="husbandry.html"><button class="btn btn-suyuan">查询</button></a>
+        <form action="husbandry.html" class="form-group">
+            <input type="text" class="form-control" id="suyuanInput" name="suyuanCode">
+            <button class="btn btn-suyuan" type="submit" id="suyuanSearch">查询</button>
+        </form>
     </section>
-    <section class="banner_1">
+    <section class="banner_1" id="banner_1">
         <div class="container">
             <div class="col-md-6 col-sm-6 col-xs-6 banner_left">
                 <!-- Nav tabs -->
@@ -95,41 +93,35 @@
                 </ul>
                 <div class="line"></div>
                 <!-- Tab panes -->
-                <div class="tab-content tabContent">
-                    <div role="tabpanel" class="tab-pane active" id="status">
-                        <img class="col-md-3 col-sm-3 col-xs-3 hidden-xs hidden-sm" id="zhdt" src="images/z1.png">
-                        <div class="col-md-1 hidden-xs hidden-sm empty"></div>
-                        <ul class="clo-md-8 clo-sm-12 zh_ul">
-                            <li>这条新闻很惊奇，因为我也不知道今天发生了什么事情</li>
-                            <li>这条新闻很惊奇，因为我也不知道今天发生了什么事情</li>
-                            <li>这条新闻很惊奇，因为我也不知道今天发生了什么事情</li>
-                            <li>这条新闻很惊奇，因为我也不知道今天发生了什么事情</li>
-                            <li>这条新闻很惊奇，因为我也不知道今天发生了什么事情</li>
-                            <li>这条新闻很惊奇，因为我也不知道今天发生了什么事情</li>
-                            <li>这条新闻很惊奇，因为我也不知道今天发生了什么事情</li>
-                            <li>这条新闻很惊奇，因为我也不知道今天发生了什么事情</li>
-                        </ul>
-                        <a href="./newsStatus.html" class="pull-right more">
-                            更多详情&nbsp;&nbsp;>>
+                <div class="tab-content tabContent" id="news_status_left">
+                    <script id="dynamic_left" type="text/html">
+                        <div role="tabpanel" class="tab-pane active" id="status">
+                            {{each news as value}} {{if value.news_cate_id == 3}}
+                            <img class="col-md-3 col-sm-3 col-xs-3 hidden-xs hidden-sm" id="zhdt" src="{{value.thumb}}" alt="{{value.thumb}}"> {{/if}} {{/each}}
+                            <div class="col-md-1 hidden-xs hidden-sm empty"></div>
+                            <ul class="clo-md-8 clo-sm-12 zh_ul">
+                                {{each news as value}} {{if value.news_cate_id == 3}}
+                                <li><a class="newsTitle" href="newsDetail.html?id={{value.id}}">{{value.title}}</a></li>
+                                {{/if}} {{/each}}
+                            </ul>
+                            <a href="./newsStatus.html?id=3" class="pull-right more">
+                            更多&nbsp;&nbsp;>>
                         </a>
-                    </div>
-                    <div role="tabpanel" class="tab-pane" id="business">
-                        <img class="col-md-3 col-sm-3 col-xs-3 hidden-xs hidden-sm" id="zhdt" src="images/z1.png">
-                        <div class="col-md-1 hidden-xs hidden-sm empty"></div>
-                        <ul class="clo-md-8 clo-sm-12 zh_ul">
-                            <li>这条新闻很惊奇a，因为我也不知道今天发生了什么事情</li>
-                            <li>这条新闻很惊奇a，因为我也不知道今天发生了什么事情</li>
-                            <li>这条新闻很惊奇a，因为我也不知道今天发生了什么事情</li>
-                            <li>这条新闻很惊奇a，因为我也不知道今天发生了什么事情</li>
-                            <li>这条新闻很惊奇，因为我也不知道今天发生了什么事情</li>
-                            <li>这条新闻很惊奇，因为我也不知道今天发生了什么事情</li>
-                            <li>这条新闻很惊奇，因为我也不知道今天发生了什么事情</li>
-                            <li>这条新闻很惊奇，因为我也不知道今天发生了什么事情</li>
-                        </ul>
-                        <a href="./newsStatus.html" class="pull-right more">
-                            更多详情&nbsp;&nbsp;>>
+                        </div>
+                        <div role="tabpanel" class="tab-pane business" id="business">
+                            {{each news as value}} {{if value.news_cate_id == 5}}
+                            <img class="col-md-3 col-sm-3 col-xs-3 hidden-xs hidden-sm" id="zhdt" src="{{value.thumb}}"> {{/if}} {{/each}}
+                            <div class="col-md-1 hidden-xs hidden-sm empty"></div>
+                            <ul class="clo-md-8 clo-sm-12 hy_ul" id="hy_ul">
+                                {{each news as value}} {{if value.news_cate_id == 5}}
+                                <li><a class="newsTitle" href="newsDetail.html?id={{value.id}}">{{value.title}}</a></li>
+                                {{/if}} {{/each}}
+                            </ul>
+                            <a href="./newsStatus.html?id=5" class="pull-right more">
+                            更多&nbsp;&nbsp;>>
                         </a>
-                    </div>
+                        </div>
+                    </script>
                 </div>
             </div>
             <div class="col-md-6 col-sm-6 col-xs-6 banner_right">
@@ -141,26 +133,23 @@
                 <!-- Tab panes -->
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="news_status">
-                        <ul class="clo-md-8">
-                            <li>[头条] 这条新闻很惊奇，因为我也不知道今天发生了什么事情这条新闻很惊奇</li>
-                            <li>[头条] 这条新闻很惊奇，因为我也不知道今天发生了什么事情这条新闻很惊奇</li>
-                            <li>[头条] 这条新闻很惊奇，因为我也不知道今天发生了什么事情这条新闻很惊奇</li>
-                            <li>[头条] 这条新闻很惊奇，因为我也不知道今天发生了什么事情这条新闻很惊奇</li>
-                            <li>[头条] 这条新闻很惊奇，因为我也不知道今天发生了什么事情这条新闻很惊奇</li>
-                            <li>[头条] 这条新闻很惊奇，因为我也不知道今天发生了什么事情这条新闻很惊奇</li>
-                            <li>[头条] 这条新闻很惊奇，因为我也不知道今天发生了什么事情这条新闻很惊奇</li>
-                            <li>[头条] 这条新闻很惊奇，因为我也不知道今天发生了什么事情这条新闻很惊奇</li>
-                        </ul>
-                        <a href="./newsStatus.html" class="pull-right more">
-                            更多详情&nbsp;&nbsp;>>
+                        <script id="dynamic_right" type="text/html">
+                            <ul class="clo-md-8">
+                                {{each news as value}} {{if value.news_cate_id == 4}}
+                                <li><a class="newsTitle" href="newsDetail.html?id={{value.id}}">{{value.title}}</a></li>
+                                {{/if}} {{/each}}
+                            </ul>
+                        </script>
+                        <a href="./newsStatus.html?id=4" class="pull-right more">
+                            更多&nbsp;&nbsp;>>
                         </a>
-                        <div class="pagination"></div>
+                        <!-- <div class="pagination"></div> -->
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <section class="banner_2">
+    <section class="banner_2" id="banner_2">
         <div class="container">
             <div class="tsProduct">
                 <span>特色产品</span>
@@ -168,43 +157,50 @@
             <a href="./tsProduct.html" class="pull-right more">更多</a>
             <div class="line"></div>
             <div class="content">
-                <div class="prev_lt" id="prev_lt">&lt;</div>
-                <div class="img_Wraper">
-                    <ul class="img_ul">
-                        <li><img src="images/lb_1.png" alt=""><div><p>企业名称</p><p>企业介绍企业介绍企业介绍企业介绍</p></div></li>
-                        <li><img src="images/lb_1.png" alt=""><div><p>企业名称</p><p>企业介绍企业介绍企业介绍企业介绍</p></div></li>
-                        <li><img src="images/lb_1.png" alt=""><div><p>企业名称</p><p>企业介绍企业介绍企业介绍企业介绍</p></div></li>
-                        <li><img src="images/lb_1.png" alt=""><div><p>企业名称</p><p>企业介绍企业介绍企业介绍企业介绍</p></div></li>
-                        <li><img src="images/lb_1.png" alt=""><div><p>企业名称</p><p>企业介绍企业介绍企业介绍企业介绍</p></div></li>
-                        <li><img src="images/lb_1.png" alt=""><div><p>企业名称</p><p>企业介绍企业介绍企业介绍企业介绍</p></div></li>
-                        <li><img src="images/lb_1.png" alt=""><div><p>企业名称</p><p>企业介绍企业介绍企业介绍企业介绍</p></div></li>
-                    </ul>
+                <div class="prev_lt" id="prev_lt"><img src="images/gt.png"></div>
+                <div class="img_Wraper" id="tsProduct_wrapper">
+                    <script id="tsProduct_templ" type="text/html">
+                        <ul class="img_ul">
+                            {{each product as value}}
+                            <li><a href="./tsProductDetail.html?id={{value.pid}}"><img width="325px" height="184px" src="{{value.pro_img}}" alt="{{value.pro_img}}">
+                            <div>
+                                <p>{{value.name}}</p>
+                            </div></a>
+                            </li>
+                            {{/each}}
+                        </ul>
+                    </script>
                 </div>
-                <div class="next_gt" id="next_gt">&gt;</div>
+                <div class="next_gt" id="next_gt"><img src="images/lt.png"></div>
             </div>
         </div>
     </section>
-    <section class="banner_2 banner_22">
+    <section class="banner_2 banner_22" id="banner_22">
         <div class="container">
             <div class="tsProduct">
                 <span>企业展示</span>
             </div>
-             <a href="./companyShow.html" class="pull-right more">更多</a>
+            <a href="./companyShow.html" class="pull-right more">更多</a>
             <div class="line"></div>
             <div class="content">
-                <div class="prev_lt" id="prev_lt">&lt;</div>
-                <div class="img_Wraper">
-                    <ul class="img_ul">
-                        <li><img src="images/lb_1.png" alt=""><div><p>企业名称</p><p>企业介绍企业介绍企业介绍企业介绍</p></div></li>
-                        <li><img src="images/lb_1.png" alt=""><div><p>企业名称</p><p>企业介绍企业介绍企业介绍企业介绍</p></div></li>
-                        <li><img src="images/lb_1.png" alt=""><div><p>企业名称</p><p>企业介绍企业介绍企业介绍企业介绍</p></div></li>
-                        <li><img src="images/lb_1.png" alt=""><div><p>企业名称</p><p>企业介绍企业介绍企业介绍企业介绍</p></div></li>
-                        <li><img src="images/lb_1.png" alt=""><div><p>企业名称</p><p>企业介绍企业介绍企业介绍企业介绍</p></div></li>
-                        <li><img src="images/lb_1.png" alt=""><div><p>企业名称</p><p>企业介绍企业介绍企业介绍企业介绍</p></div></li>
-                        <li><img src="images/lb_1.png" alt=""><div><p>企业名称</p><p>企业介绍企业介绍企业介绍企业介绍</p></div></li>
-                    </ul>
+                <div class="prev_lt" id="prev_lt"><img src="images/gt.png"></div>
+                <div class="img_Wraper" id="enterprise_wrapper">
+                    <script id="enterprise_templ" type="text/html">
+                        <ul class="img_ul">
+                            {{each enterprise as value}}
+                            <li><a href="./companyDetail.html?id={{value.cid}}">
+                            <img width="325px" height="184px" src="{{value.thumb}}">
+                            <div class="enterprise_wrapper">
+                                <p>{{value.organ_name}}</p>
+                                <!-- <p class="enterprise_intro">{{value.intro}}</p> -->
+                            </div>
+                        </a>
+                            </li>
+                            {{/each}}
+                        </ul>
+                    </script>
                 </div>
-                <div class="next_gt" id="next_gt">&gt;</div>
+                <div class="next_gt" id="next_gt"><img src="images/lt.png"></div>
             </div>
         </div>
     </section>
@@ -213,7 +209,7 @@
             <div class="container">
                 <div class="wrap_b3">
                     <div class="col-md-2 col-sm-2">
-                    <img src="images/ewm.png">
+                        <img src="images/ewm.png">
                     </div>
                     <div class="col-md-6 col-sm-6">
                         <p>手机扫一扫 随时随地查溯源</p>
@@ -225,26 +221,43 @@
             </div>
         </div>
     </section>
-    <section class="banner_4">
+    <section class="banner_4" id="nj_course">
         <div class="container">
             <div class="nj_course">
                 <span>农家讲堂</span>
             </div>
-             <a href="./nj_course.html" class="pull-right more">更多</a>
+            <a href="./nj_course.html" class="pull-right more">更多</a>
             <div class="line"></div>
-            <div class="content">
+            <div class="content" id="course_wrapper">
+                <script id="course_templ" type="text/html">
                     <ul class="nj_ul">
+                        {{if course.lszw.length}}
                         <li class="col-md-3 col-sm-3 col-xs-3">
-                            <a href="#"><img class="col-md-12 col-sm-12 col-xs-12" src="images/n1.png" alt="">
-                            <div class="hidden-xs word_wraper"><span>讲堂名称</span><p>讲堂详细内容介绍讲堂详细内容介绍</p></div>
-                            </a></li>
+                            <a href="./nj_course.html?id={{course.syjzz[0].article_cate_id}}"><img width="255px" class="col-md-12 col-sm-12 col-xs-12" src="images/s_course.jpg" alt="{{course.jjzw[0].thumb}}255*228">
+                                <div class="hidden-xs word_wraper"><span>食用菌种植课堂</span><!-- p class="course_intro">{{course.lszw[0].description}}</p> --></div>
+                                </a>
+                        </li>
+                        {{/if}} {{if course.jjzw.length}}
                         <li class="col-md-3 col-sm-3 col-xs-3">
-                            <a href="#"><img class="col-md-12 col-sm-12 col-xs-12" src="images/n1.png" alt=""><div class="hidden-xs word_wraper"><span>讲堂名称</span><p>讲堂详细内容介绍讲堂详细内容介绍</p></div></a></li>
+                            <a href="./nj_course.html?id={{course.jjzw[0].article_cate_id}}"><img width="255px" class="col-md-12 col-sm-12 col-xs-12" src="images/j_course.jpg" alt="">
+                                <div class="hidden-xs word_wraper"><span>经济作物种植课堂</span><!-- <p class="course_intro">{{course.jjzw[0].description}}</p> --></div>
+                                </a>
+                        </li>
+                        {{/if}} {{if course.syjzz.length}}
                         <li class="col-md-3 col-sm-3 col-xs-3">
-                            <a href="#"><img class="col-md-12 col-sm-12 col-xs-12" src="images/n1.png" alt=""><div class="hidden-xs word_wraper"><span>讲堂名称</span><p>讲堂详细内容介绍讲堂详细内容介绍</p></div></a></li>
+                            <a href="./nj_course.html?id={{course.lszw[0].article_cate_id}}"><img width="255px" class="col-md-12 col-sm-12 col-xs-12" src="images/l_course.jpg" alt="">
+                                <div class="hidden-xs word_wraper"><span>粮食作物种植课堂</span><!-- <p class="course_intro">{{course.syjzz[0].description}}</p> --></div>
+                                </a>
+                        </li>
+                        {{/if}} {{if course.sczz.length}}
                         <li class="col-md-3 col-sm-3 col-xs-3">
-                            <a href="#"><img class="col-md-12 col-sm-12 col-xs-12" src="images/n1.png" alt=""><div class="hidden-xs word_wraper"><span>讲堂名称</span><p>讲堂详细内容介绍讲堂详细内容介绍</p></div></a></li>
+                            <a href="./nj_course.html?id={{course.sczz[0].article_cate_id}}"><img width="255px" class="col-md-12 col-sm-12 col-xs-12" src="images/sc_course.jpg" alt="">
+                                <div class="hidden-xs word_wraper"><span>蔬菜种植课堂</span><!-- <p class="course_intro">{{course.sczz[0].description}}</p> --></div>
+                                </a>
+                        </li>
+                        {{/if}}
                     </ul>
+                </script>
             </div>
         </div>
     </section>
@@ -256,12 +269,33 @@
             <div class="line"></div>
             <!-- <button id="btn">获取商家位置</button> -->
             <div class="content">
-                    <div class="col-md-1 col-sm-1 col-xs-1"></div>
-                    <div class="col-md-10 col-sm-10 col-xs-10">
-                    <div id="map_wrapper" class="col-md-12 col-sm-12 col-xs-12 map_wrapper"></div>
-                        <img class="col-md-12 col-sm-12 col-xs-12" src="images/m1.png">
+                <div id="map_wrapper" class="col-md-12 col-sm-12 col-xs-12 map_wrapper"></div>
+                <div class="canvasDraw">
+                    <div class="tj_yuan">
+                        <ul class="col-md-12 col-sm-12 col-xs-12">
+                            <li>
+                                <canvas id="canvas1" width="182px" height="182px"></canvas>
+                                <p>入网企业</p>
+                            </li>
+                            <li>
+                                <canvas id="canvas2" width="182px" height="182px"></canvas>
+                                <p>溯源农产品</p>
+                            </li>
+                            <li>
+                                <canvas id="canvas3" width="182px" height="182px"></canvas>
+                                <p>溯源畜牧产品</p>
+                            </li>
+                            <li>
+                                <canvas id="canvas4" width="182px" height="182px"></canvas>
+                                <p>质量安全查询频次</p>
+                            </li>
+                            <li>
+                                <canvas id="canvas5" width="182px" height="182px"></canvas>
+                                <p>农产品质量检测预警</p>
+                            </li>
+                        </ul>
                     </div>
-                    <div class="col-md-1 col-sm-1 col-xs-1"></div>
+                </div>
             </div>
         </div>
     </section>
@@ -272,13 +306,13 @@
             </div>
             <div class="line"></div>
             <div class="content">
-                    <div class="col-md-1 col-sm-1 col-xs-1"></div>
-                    <img class="col-md-10 col-sm-10 col-xs-10" src="images/pj.png">
-                    <div class="col-md-1 col-sm-1 col-xs-1"></div>
+                <!-- <div class="col-md-1 col-sm-1 col-xs-1"></div> -->
+                <img class="col-md-12 col-sm-12 col-xs-12" src="images/pj.png">
+                <!-- <div class="col-md-1 col-sm-1 col-xs-1"></div> -->
             </div>
         </div>
     </section>
-    <section class="footer">
+    <section class="footer" style="position:static;">
         <div class="col-md-4 col-sm-3 col-xs-6 f1">溯源</div>
         <div class="col-md-4 col-sm-6 col-xs-6 hidden-xs f2">
             <ul class="col-md-12 col-sm-12">
@@ -295,14 +329,146 @@
                 <div class="col-md-1 col-sm-1 col-xs-1 f2_4">号</div>
             </div>
         </div>
-        <div class="col-md-4 col-sm-3 col-xs-6 f3">Copyright @ 2017</div>
+        <div class="col-md-4 col-sm-3 col-xs-6 f3">Copyright © 2017</div>
     </section>
-
 </body>
 
 </html>
 <script src="node_modules/jquery/dist/jquery.min.js"></script>
 <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="js/jquery.pagination.js"></script>
-<script src="js/pagination.js"></script>
+<script src="js/template.js"></script>
+<!-- <script src="js/jquery.pagination.js" charset=utf-8></script> -->
+<!-- <script src="js/pagination.js" charset=utf-8></script> -->
 <script src="js/index.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/search.js" charset=utf-8></script>
+<script src="js/style.js"></script>
+<script>
+//canvas画图方法
+function draw(ctx, x, y, radius, startAngle, endAngle, anticlockwise, innerStyle, outerStyle, wordStyle, text) {
+
+    ctx.lineWidth = 8
+    ctx.beginPath();
+
+    ctx.arc(x, y, radius, startAngle, endAngle, anticlockwise);
+    ctx.strokeStyle = innerStyle
+    ctx.stroke();
+    ctx.closePath();
+    //外圆
+    ctx.lineWidth = 1
+    ctx.beginPath();
+    ctx.arc(x, y, radius + 10, 0, 2 * Math.PI, anticlockwise)
+    ctx.strokeStyle = wordStyle;
+    ctx.font = "20px serif";
+    ctx.strokeText(text, x - ctx.measureText(text).width / 2, y + 10);
+    ctx.strokeStyle = outerStyle;
+    ctx.stroke()
+}
+//百度地图
+var longitude, latitude, point, text = [];
+
+function getMap(points) {
+    var geolocation = new BMap.Geolocation();
+    var map = new BMap.Map('map_wrapper');
+    // var points = [
+    //     { "lng": 113.587909, "lat": 35.598947 },
+    //     { "lng": 113.60512, "lat": 35.58961 },
+    //     { "lng": 113.888984, "lat": 35.304671 },
+    //     { "lng": 113.792974, "lat": 35.196196 }
+    // ];
+    for (var i = 0, len = points.length; i < len; i++) {
+        // console.log(longitude)
+        point = new BMap.Point(points[i].lng, points[i].lat);
+        var marker = new BMap.Marker(point); //将点转化成标注点
+        map.addOverlay(marker); //将标注点添加到地图上
+        // 创建点坐标
+        map.centerAndZoom(point, 11);
+        map.setCurrentCity("新乡");
+        map.enableScrollWheelZoom();
+    }
+}
+// getMap();
+$(function() {
+    $.ajax({
+        url: URL + '/index/index/index',
+        type: 'post',
+        dataType: 'json',
+        async: false,
+        success: function(msg) {
+            text = ['家', '种', '种', '人次', '次'];
+            var j = 0;
+            for (var i in msg.data) {
+
+                text[j] = msg.data[i] + text[j];
+                j++;
+            }
+            // canvas画图
+            for (var i = 1; i < 6; i++) {
+                var canvas = document.getElementById('canvas' + i);
+                // canvas.style.border = '1px solid #E2E0E0';
+                if (canvas.getContext) {
+                    var ctx = canvas.getContext('2d');
+                    // text = ['1','41','1','59514','1'];
+
+                    var arcLength = [4 / 5, 3 / 5, 9 / 10, 1 / 10, 14 / 15, 7 / 10, 4 / 5, 1 / 2];
+                    draw(ctx, 91, 91, 81, -Math.PI / 2, 2 * Math.PI * arcLength[i - 1], true, '#EFEEEE', '#D8D7D7', 'red', text[i - 1])
+                }
+            }
+            getMap(msg.location)
+            var html = template('dynamic_left', msg);
+            $('#news_status_left').html(html);
+            html = template('dynamic_right', msg);
+            $('#news_status').prepend(html);
+            html = template('tsProduct_templ', msg);
+            $('#tsProduct_wrapper').html(html);
+            html = template('enterprise_templ', msg);
+            $('#enterprise_wrapper').html(html);
+            html = template('course_templ', msg);
+            $('#course_wrapper').html(html);
+            // hover图片改变
+            // $(".zh_ul").on("mouseover", 'li', function() {
+            //     var index = $(this).index();
+            //     console.log(index)
+            //     $(".tabContent img").eq(index).siblings('img').css({ 'display': 'none' });
+            //     $(".tabContent img").eq(index).css({ 'display': 'block' });
+            // })
+            changeImg($('.zh_ul'), $("#status img"))
+            changeImg($('.hy_ul'), $("#business img"))
+
+            function changeImg(elements1, elements2) {
+                elements1.on("mouseover", 'li', function() {
+                    var index = $(this).index();
+                    elements2.eq(index).siblings('img').css({ 'display': 'none' });
+                    elements2.eq(index).css({ 'display': 'block' });
+                })
+            }
+
+            // $(".enterprise_wrapper").hover(
+            //     function () {
+            //       $(this).stop().animate({ top: "110" }, 10000);
+            //     },
+            //     function () {
+            //       $(this).stop().animate({ top: "140" }, 1000);
+            //     }
+            // );
+            //省略多余字体
+            // function limit(ele, num) {
+            //     for (var i = 0; i < ele.length; i++) {
+            //         if (ele.eq(i).html().length > num) {
+            //             var content = ele.eq(i).html().substring(0, num);
+            //             ele.eq(i).html(content + '...');
+            //         }
+            //     }
+            // }
+
+            // limit($(".newsTitle"), 24);
+            // limit($(".enterprise_intro"), 23);
+            // limit($(".word_wraper"), 17);
+        },
+        error: function(xhr) {
+
+            console.log(xhr)
+        }
+    })
+})
+</script>

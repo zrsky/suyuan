@@ -1,6 +1,11 @@
 /*news_status*/
+.companyShow {
+	min-height: 667px;
+	margin-bottom: 50px;
+}
 .companyShow .top_img {
 	position: relative;
+	top: 18px;
 }
 .companyShow .top_img img {
 	width: 100%;
@@ -10,6 +15,10 @@
 	top: 40%;
 	left: 20%;
 	font-size: 1vw;
+	color: #fff;
+	cursor: pointer;
+}
+.companyShow .top_img p a {
 	color: #fff;
 }
 .companyShow .companyShow_content {
@@ -24,6 +33,12 @@
 .companyShow .companyShow_content ul li {
 	float: left;
 	margin: 0 10px;
+}
+.companyShow .companyShow_content ul li p {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	width: 241px;
 }
 .companyShow .companyShow_content ul li p:nth-of-type(1) {
 	margin-top: 10px;

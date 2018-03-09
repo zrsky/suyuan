@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>新闻详情</title>
+    <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <!-- <link rel="stylesheet" type="text/css" href="css/pagination.css"> -->
+    <link rel="stylesheet" type="text/css" href="css/newsStatus.css">
+    <style type="text/css">
+        .footer {
+            position: static;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 导航栏  -->
+    <section class="navBar hidden-xs">
+        <div class="col-md-8 col-sm-12">
+            <p class="nav_p1"><a href="./index.html">延津县电子商务平台</a></p>
+            <p class="nav_p2"><a href="./index.html">Yanjin County E-commerce Platform</a></p>
+        </div>
+        <div class="col-md-4 col-sm-12 search">
+            <form id="searchForm" action="#">
+                <input id="oInput" type="text" name="keyword">
+                <!-- <span>新闻动态</span> -->
+                <ul id="main">
+                    <li>新闻动态</li>
+                </ul>
+                <ul id="drop" class="drop">
+                    <li>新闻动态</li>
+                    <li>特色产品</li>
+                    <li>企业展示</li>
+                    <li>农家课堂</li>
+                </ul>
+                <i class="glyphicon glyphicon-triangle-bottom
+                glyphicon glyphicon-"></i>
+                <button type="submit" id="search">搜索</button>
+            </form>
+        </div>
+    </section>
+    <!-- /导航栏  -->
+    <!-- 版心 -->
+    <section class="news_status" id="pannel_wrapper">
+        <script id="newsDetail_templ" type="text/html">
+            <div class="top_img">
+                <img src="images/news.jpg" alt="">
+                <p><a href="./newsStatus.html?id={{data.news_cate_id}}"><img class="back" src="images/back.png"></a>
+                    <span>{{data.cate_name}}</span>
+                </p>
+            </div>
+            <div class="news_status_content">
+                <div class="container">
+                    <div class="panel panel-warning">
+                        <div>
+                            <div class="panel-heading">
+                                <h1 style="text-align:center;">{{data.title}}</h1>
+                            </div>
+                            {{#data.content}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </script>
+    </section>
+    <!-- /版心 -->
+    <!-- 底部 -->
+    <section class="footer">
+        <div class="col-md-4 col-sm-3 col-xs-6 f1">溯源</div>
+        <div class="col-md-4 col-sm-6 col-xs-6 hidden-xs f2">
+            <ul class="col-md-12 col-sm-12">
+                <li>产品溯源</li>
+                <li>舆情监测</li>
+                <li>优秀产品</li>
+                <li>移动助手</li>
+                <li>用户指南</li>
+            </ul>
+            <div class="">
+                <div class="col-md-3 col-sm-3 col-xs-2 f2_1">滇ICP备</div>
+                <div class="col-md-4 col-sm-4 col-xs-5 f2_2">号 | 滇公网安备</div>
+                <div class="col-md-3 col-sm-3 col-xs-3 f2_3">号 | 滇ICP证</div>
+                <div class="col-md-1 col-sm-1 col-xs-1 f2_4">号</div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-3 col-xs-6 f3">Copyright © 2017</div>
+    </section>
+    <!-- /底部 -->
+</body>
+
+</html>
+<script src="node_modules/jquery/dist/jquery.min.js"></script>
+<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="js/template.js"></script>
+<!-- <script src="js/jquery.pagination.js"></script>
+<script src="js/pagination.js"></script> -->
+<script src="js/nav.js"></script>
+<script src="js/search.js" charset=utf-8></script>
+<script src="js/style.js"></script>
+<script>
+$(function() {
+    var id = window.location.search.split("=")[1];
+
+    $.ajax({
+        url: URL + '/index/news/shows/news_id/' + id,
+        type: 'get',
+        dataType: 'json',
+        async: false,
+        success: function(msg) {
+            var data = {
+                data: msg
+            }
+            var html = template('newsDetail_templ', data);
+            $("#pannel_wrapper").html(html);
+            //省略多余字体
+            // function limit(ele, num) {
+            //     for (var i = 0; i < ele.length; i++) {
+            //         if (ele.eq(i).html().length > num) {
+            //             var content = ele.eq(i).html().substring(0, 23);
+            //             ele.eq(i).html(content + '...');
+            //         }
+            //     }
+            // }
+
+            // limit($(".newsTitle"), 24);
+            // limit($(".enterprise_intro"), 23);
+            // limit($(".course_intro"), 17);
+        },
+        error: function(xhr) {
+
+            console.log(xhr)
+        }
+    })
+})
+</script>
